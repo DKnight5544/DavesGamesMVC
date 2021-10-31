@@ -1,0 +1,146 @@
+﻿html, body {
+    margin: 0;
+    padding: 0;
+    font-family: monospace;
+    margin-bottom:20px;
+}
+
+.container {
+    position: relative;
+    width: 400px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#banner {
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    /*border: 2px solid blue;*/
+    background-color: blue;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    box-sizing: border-box;
+    margin-bottom: 0px;
+}
+
+.user {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    cursor: pointer;
+    display: inline-block;
+    color: grey;
+    border: 1px solid grey;
+    border-radius: 10px;
+    font-size: 18px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-decoration: none;
+}
+
+    .user:hover {
+        color: blue;
+        border: 2px solid blue;
+        font-weight: bold;
+        padding-top: 9px;
+        padding-bottom: 9px;
+    }
+
+.focused {
+    border: 1px solid blue;
+    background-color: blue;
+    color: white;
+}
+
+    .focused:hover {
+        background-color: white;
+        color: blue;
+    }
+
+
+input {
+    cursor: pointer;
+    display: inline-block;
+    color: grey;
+    border: 1px solid grey;
+    border-radius: 10px;
+    font-size: 18px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-decoration: none;
+    text-align: center;
+    font-family: monospace;
+}
+
+
+button {
+    cursor: pointer;
+    display: inline-block;
+    color: grey;
+    border: 1px solid grey;
+    border-radius: 10px;
+    font-size: 18px;
+    padding: 10px;
+}
+
+    button:hover {
+        color: blue;
+        border: 1px solid blue;
+        font-weight: bold;
+    }
+
+table {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+b {
+    font-weight: bold;
+    color: blue;
+}
+
+a{
+    font-weight:bold;
+}
+
+.ad-copy {
+    color: grey;
+    border: 1px solid grey;
+    border-radius: 10px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    font-size: 18px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing:border-box;
+    text-align: left;
+}
+
+.blue {
+    border: 1px solid blue;
+    color: blue;
+}
+
+.green {
+    border: 1px solid forestgreen;
+    color: forestgreen;
+}
+
+.red {
+    border: 1px solid red;
+    color: red;
+}

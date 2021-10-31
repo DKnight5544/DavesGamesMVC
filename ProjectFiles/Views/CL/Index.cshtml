@@ -1,0 +1,67 @@
+﻿@model DavesGamesMVC.LinqToSQL.UserModel
+
+<div class="container">
+
+    @*<img src="~/Content/Images/DomainForSale02.jpg"
+        onclick="window.location.href = 'https://www.clearlybaked.com'" />*@
+
+    <div id="banner">Virtual Chain Letter</div>
+
+    @{
+        string IsDashes(string name)
+        {
+            return name == "---" ? "" : string.Format("https://paypal.me/{0}/10", name);
+        }
+    }
+
+    <a href="@IsDashes(Model.u5Name)" class="user">@Model.u5Name</a>
+    <a href="@IsDashes(Model.u4Name)" class="user">@Model.u4Name</a>
+    <a href="@IsDashes(Model.u3Name)" class="user">@Model.u3Name</a>
+    <a href="@IsDashes(Model.u2Name)" class="user">@Model.u2Name</a>
+    <a href="@IsDashes(Model.u1Name)" class="user">@Model.u1Name</a>
+    <a href="@IsDashes(Model.UserName)" class="user focused">@Model.UserName (Page Owner)</a>
+
+    <div class="ad-copy blue">
+        Would you like the <i>possibility</i> of receiving multiple $10 gifts via PayPal?
+    </div>
+    <div class="ad-copy red">
+        Step 1: Get a free <a href="https://paypal.me/">PayPal.me</a> account
+        if you don't already have one.
+    </div>
+    <div class="ad-copy blue">
+        Step 2: Enter your PayPal.me link name and get a free
+        personlized copy of this page.
+    </div>
+
+    <table>
+        <tr>
+            <td>
+                <input type="text" id="UserNameInput" value="" />
+            </td>
+            <td style="width:100px;">
+                <button onclick="addUser('@Model.UserName');">SUBMIT</button>
+            </td>
+        </tr>
+    </table>
+
+    <div class="ad-copy green">
+        Step 3: Share your page with at least five (5) others who do the same.
+    </div>
+
+
+    <div class="ad-copy red">
+        Step 4. Optionally give $10 gifts to the people on your list.
+    </div>
+
+    <div class="ad-copy green">
+        Here are some reasons to give:
+    </div>
+
+    <div class="ad-copy red">You will make someone's day!</div>
+    <div class="ad-copy blue">You will experience joy!</div>
+    <div class="ad-copy green">Your kids may start doing their chores. But not likely.</div>
+    <div class="ad-copy red">Giving prevents covid-19.</div>
+    <div class="ad-copy blue">Giving prevents hair loss.</div>
+    <div class="ad-copy green">Giving prevents sudden rapid weight gain.</div>
+
+</div>

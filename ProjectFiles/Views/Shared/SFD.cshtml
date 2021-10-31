@@ -1,0 +1,77 @@
+﻿
+@Scripts.Render(ViewBag.MoveJS)
+
+<form id="form1" method="post" action="/SFDUC" enctype="multipart/form-data" >
+
+    <input type="hidden" id="aboutDisplayStatus" name="aboutDisplayStatus" value="@ViewBag.AboutDisplayStatus" runat="server" />
+    <input type="hidden" id="gridString" name="gridString" runat="server" value="@ViewBag.GridString" />
+
+    <input style="display:none;"
+           type="file"
+           name="fileInput"
+           id="fileInput"
+           onchange="reloadFile()" />
+
+</form>
+
+<div class="main_container about" id="aboutContainer">
+
+    <button class="closeButton" onclick="closeAbout(this);">X</button>
+
+
+    <p class="para_header">Win $300!!</p>
+
+    <p class="para">
+        Be the <b>first</b> to code a JavaScript function to solve the
+        <b>first row</b> of this slider puzzle and <b>win $300!!</b>
+    </p>
+
+    <p class="para_header">Win $100!!</p>
+
+    <p class="para">
+        Share this challange with your coder peeps. If
+        someone you invite wins, you win <b>$100!!</b>
+    </p>
+
+
+    <p class="para_header">The Demo</p>
+    <p class="para">
+        Check out the demo. My move function marches the blank square
+        around the board. You can view and save the demo script
+        to your local computer.  From there you can replace the script
+        with your own code.<a href="move.js" target="_blank">View & Save.</a>
+    </p>
+
+    <p class="para_header">Get Started Now!</p>
+
+    <p class="para">
+        Use the "uploadScript()" button to load <b><i>your</i></b> script file into the puzzle.
+    </p>
+
+    <p class="para">
+        Use the F12 developer's tools to test and debug your code along the way.
+    </p>
+
+    <p class="para_header">Submit Your Code</p>
+    <p class="para">
+        When your script can solve the first row, squares 1-5, consistantly, zip it up and send it to me
+        at<a href="mailto:dave@daves.games">dave@daves.games</a> and I will code-review and test it.
+    </p>
+
+    <p class="para">
+        If you are the first coder to submit a move function
+        that can solve positions 1-5, on 3 randomly generated puzzles then you will win <b>$300!!</b>
+    </p>
+
+    <ol>
+        <li>Your function must be named "move".</li>
+        <li>Your function must not access <b>my</b> global variables.</li>
+        <li>Your function must not access the DOM.</li>
+        <li>You must include your email address, and the email address of the person who told you about the challenge.</li>
+    </ol>
+
+
+</div>
+
+<div class="main_container" id="boardContainer">
+</div>
