@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using DavesGamesMVC.LinqToSQL;
+using DavesGamesMVC.DatabaseAccess.ChainLetter;
 
 namespace DavesGamesMVC.Controllers
 {
@@ -20,7 +20,7 @@ namespace DavesGamesMVC.Controllers
             UserModel user;
             string connStr = Environment.GetEnvironmentVariable("DWKDBConnectionString");
 
-            using (ChainLetterDataContext c = new ChainLetterDataContext(connStr))
+            using (DWKDBDataContext c = new DWKDBDataContext(connStr))
             {
 
                 if (id.Contains("add|"))

@@ -1,0 +1,109 @@
+﻿@model DavesGamesMVC.DatabaseAccess.TheOrg.UserModel
+
+<div class="container">
+
+
+
+    @*<div id="banner">MY MONEY MAGNET</div>*@
+
+    @{
+
+    }
+
+    <a class="stats-panel stats-panel-blue" href="https://paypal.me/@Model.UserName/10">
+        <div class="stats-panel-name">@Model.UserName</div>
+        <div class="stats-panel-stat">
+            @(Model.UserOwnerCount.HasValue ? Model.UserOwnerCount : 0)
+        </div>
+    </a>
+
+    @{
+        bool color = true;
+        string GetClassName()
+        {
+            color = !color;
+            return color == false ? "blue" : "green";
+        }
+    }
+
+    <div class="ad-copy red">
+        This website is a game where the object is to build
+        the largest network.
+    </div>
+
+    <div class="ad-copy @GetClassName()">
+        Anyone with a FREE <a href="https://paypal.me/">PayPal.me</a> link can play.
+    </div>
+
+    <div class="ad-copy @GetClassName()">
+        All you need to do is get a FREE personlized copy of this
+        web page, and share it with potential new players.
+    </div>
+
+    <div class="ad-copy @GetClassName()">
+        Your first two new players will roll up
+        into your sponsors network, and your network
+        begins with the third.
+    </div>
+
+    <div class="ad-copy @GetClassName()">
+        That player will then roll up his first two new players
+        to you giving you 2 new players.
+    </div>
+
+    <div class="ad-copy @GetClassName()">
+        Those 2 players will each give you 2 new players giving
+        you 4 more new players.
+    </div>
+
+    <div class="ad-copy @GetClassName()">
+        Those 4 players will each give you 2 new players giving
+        you 8 more new players. And so on, and so on...
+    </div>
+
+    <div class="ad-copy @GetClassName()">
+        Warning: PayPal only has 300 million or so users who can play.
+    </div>
+
+    <div class="ad-copy @GetClassName()">
+        Get started by giving us your <a href="https://paypal.me/">PayPal.me</a> link name.
+    </div>
+
+    <table>
+        <tr>
+            <td>
+                <input type="text" id="UserNameInput" value="" />
+            </td>
+            <td style="width:100px;">
+                <button onclick="addUser('@Model.UserName');">SUBMIT</button>
+            </td>
+        </tr>
+    </table>
+
+    <div class="ad-copy @GetClassName()">
+        Is your name in the big blue box above? If so then this is your
+        page. Start sharing your page and building your network!!
+    </div>
+
+    <div class="ad-copy @GetClassName()">
+        Query: how would you feel if people in your network
+        started sending you $10 gifts?
+    </div>
+
+    <div class="ad-copy @GetClassName()">
+        If your answer is "thrilled" then I suggest you send
+        a $10 gift using the big green button below.
+    </div>
+
+    @{ if (Model.UserName != Model.SponsorName)
+        {
+            <a class="stats-panel stats-panel-green" href="https://paypal.me/@Model.OwnerName/10">
+                <div class="stats-panel-name">@Model.OwnerName</div>
+            </a>
+        }
+
+    }
+
+    @*<a href="https://www.clearlybaked.com" class="domain-link">Funny Domain For Sale</a>*@
+
+</div>

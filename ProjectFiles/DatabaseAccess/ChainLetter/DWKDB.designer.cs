@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DavesGamesMVC.LinqToSQL
+namespace DavesGamesMVC.DatabaseAccess.ChainLetter
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -23,7 +23,7 @@ namespace DavesGamesMVC.LinqToSQL
 	
 	
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="dwk-multiple-projects")]
-	public partial class ChainLetterDataContext : System.Data.Linq.DataContext
+	public partial class DWKDBDataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
@@ -32,31 +32,31 @@ namespace DavesGamesMVC.LinqToSQL
     partial void OnCreated();
     #endregion
 		
-		public ChainLetterDataContext() : 
+		public DWKDBDataContext() : 
 				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["dwk_multiple_projectsConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public ChainLetterDataContext(string connection) : 
+		public DWKDBDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public ChainLetterDataContext(System.Data.IDbConnection connection) : 
+		public DWKDBDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public ChainLetterDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public DWKDBDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public ChainLetterDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public DWKDBDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dwk-multiple-projects" Class="ChainLetterDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dwk-multiple-projects" Class="DWKDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=dwk-sql-server-01.database.windows.net;Initial Catalog=dwk-multiple-projects;User ID=TimerToysApp" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="dwk_multiple_projectsConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="mlm.UserModel" Member="UserModels">
     <Type Name="UserModel" Id="ID1">

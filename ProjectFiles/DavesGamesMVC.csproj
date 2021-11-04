@@ -131,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ORG.cs" />
     <Compile Include="Controllers\CLController.cs" />
     <Compile Include="Controllers\GameOfLifeController.cs" />
     <Compile Include="Controllers\SFDUCController.cs" />
@@ -139,18 +140,24 @@
     <Compile Include="Controllers\SudokuSolver.cs" />
     <Compile Include="Controllers\D2DController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="LinqToSQL\ChainLetter.designer.cs">
+    <Compile Include="DatabaseAccess\ChainLetter\DWKDB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ChainLetter.dbml</DependentUpon>
+      <DependentUpon>DWKDB.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseAccess\TheOrg\DWKDB.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DWKDB.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\SFDModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\org.css" />
     <Content Include="Content\D2D.css" />
     <Content Include="Content\cl.css" />
     <Content Include="Content\Home.css" />
@@ -186,6 +193,7 @@
     <Content Include="Content\SliderPuzzleCustomizations\VeryLikely.jpg" />
     <Content Include="Content\SliderPuzzleCustomizations\VeryLikely.js" />
     <Content Include="Content\SudokuSolver.css" />
+    <Content Include="Scripts\org.js" />
     <Content Include="Scripts\cl.js" />
     <Content Include="Scripts\Home.js" />
     <Content Include="Scripts\GameOfLife.js" />
@@ -215,13 +223,21 @@
     <Folder Include="Views\SFD\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="LinqToSQL\ChainLetter.dbml">
+    <Content Include="DatabaseAccess\ChainLetter\DWKDB.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>ChainLetter.designer.cs</LastGenOutput>
+      <LastGenOutput>DWKDB.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
-    <None Include="LinqToSQL\ChainLetter.dbml.layout">
-      <DependentUpon>ChainLetter.dbml</DependentUpon>
+    <None Include="DatabaseAccess\ChainLetter\DWKDB.dbml.layout">
+      <DependentUpon>DWKDB.dbml</DependentUpon>
+    </None>
+    <Content Include="DatabaseAccess\TheOrg\DWKDB.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DWKDB.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="DatabaseAccess\TheOrg\DWKDB.dbml.layout">
+      <DependentUpon>DWKDB.dbml</DependentUpon>
     </None>
     <None Include="packages.config" />
     <Content Include="Views\D2D\Index.cshtml" />
@@ -232,6 +248,8 @@
     <None Include="Properties\PublishProfiles\davesgames - Web Deploy.pubxml" />
     <Content Include="Views\CL\Index.cshtml" />
     <None Include="Properties\PublishProfiles\davesgames - Web Deploy1.pubxml" />
+    <Content Include="Views\ORG\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\davesgames - Web Deploy2.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
