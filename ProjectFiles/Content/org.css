@@ -105,10 +105,12 @@ button {
     }
 
 input {
+    margin-top:5px;
     cursor: pointer;
     display: inline-block;
     color: grey;
     border: 1px solid grey;
+    box-sizing:border-box;
     font-size: 18px;
     padding-top: 10px;
     padding-bottom: 10px;

@@ -14,7 +14,7 @@
         }
     }
 
-    <a class="stats-panel stats-panel-blue" href="https://paypal.me/@Model.UserName/10">
+    <a class="stats-panel stats-panel-blue" href="https://paypal.me/@Model.UserName/">
         <div class="stats-panel-name">@Model.UserName</div>
         <div class="stats-panel-stat">
             @(Model.UserOwnerCount.HasValue ? Model.UserOwnerCount : 0)
@@ -31,8 +31,8 @@
 
         <div name="Question" id="Q" class="question">
 
-            <div class="q-text">
-                Is this your PayPal.me user name?
+            <div class="q-text" style="text-align:center;">
+                Is this your page?
             </div>
 
 
@@ -51,21 +51,21 @@
 
             <ol>
                 <li>
-                    Test the blue <b style="color:blue;">@Model.UserName</b> button to see if it works.
+                    Test your blue button to see if it works.
                 </li>
                 <li>
-                    Share your page with <b style="color:blue;"><i>at least</i></b> 3 friends.
+                    Share your page with at least 3 friends.
                 </li>
                 <li>
                     Visit this page often and watch your network grow!
                 </li>
                 <li>
-                    Optional: Make <b style="color:blue;">@Model.OwnerName</b>'s day by sending a $10 gift.
+                    Optional: Send @Model.OwnerName a $10 gift.
                 </li>
             </ol>
 
             <br />
-            <button onclick="window.open('https://paypal.me/WIGIWIZ/10');">$10</button>
+            <button onclick="window.open('https://paypal.me/@Model.OwnerName/10');">$10</button>
             <button onclick="showQuestion('Q-Y-N');">DEMO</button>
 
 
@@ -84,12 +84,7 @@
                 <li>
                     There are an unlimited number of potential new users.
                 </li>
-                <li>
-                    The statement above is not true, but PayPal does have over 377 million active users.
-                </li>
             </ol>
-
-            <br />
 
             <br />
             <button onclick="showQuestion('Q-Y');">PREV</button>
@@ -128,7 +123,7 @@
 
         <div name="Question" id="Q-N">
 
-            <div class="q-text">
+            <div class="q-text" style="text-align:center;">
                 Do you have a PayPal.me link?
             </div>
 
@@ -141,9 +136,9 @@
         <div name="Question" id="Q-N-Y" class="question">
 
 
-            <div style="text-align:left;">
-                <div class="q-text">
-                    Find My Page
+            <div>
+                <div class="q-text" style="text-align:center;">
+                    Let's find your page.
                 </div>
                 <br />
                 <br />
@@ -155,7 +150,7 @@
                 <input type="text" id="UserNameInput" value="" />
 
 
-                <button onclick="addUser('WIGIWIZ');">FIND</button>
+                <button onclick="addUser('@Model.UserName');">FIND</button>
             </div>
 
         </div>
