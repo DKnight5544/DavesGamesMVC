@@ -1,21 +1,9 @@
 ﻿@model DavesGamesMVC.DatabaseAccess.TheOrg.UserModel
 
+
 <div class="container">
 
-
-
-    @*<div id="banner">MY MONEY MAGNET</div>*@
-
-    @{
-
-    }
-
-    <a class="stats-panel stats-panel-blue" href="https://paypal.me/@Model.UserName/10">
-        <div class="stats-panel-name">@Model.UserName</div>
-        <div class="stats-panel-stat">
-            @(Model.UserOwnerCount.HasValue ? Model.UserOwnerCount : 0)
-        </div>
-    </a>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     @{
         bool color = true;
@@ -26,84 +14,162 @@
         }
     }
 
-    <div class="ad-copy red">
-        This website is a game where the object is to build
-        the largest network.
+    <a class="stats-panel stats-panel-blue" href="https://paypal.me/@Model.UserName/10">
+        <div class="stats-panel-name">@Model.UserName</div>
+        <div class="stats-panel-stat">
+            @(Model.UserOwnerCount.HasValue ? Model.UserOwnerCount : 0)
+        </div>
+    </a>
+
+    <div id="DisplayWindow">
+
     </div>
 
-    <div class="ad-copy @GetClassName()">
-        Anyone with a FREE <a href="https://paypal.me/">PayPal.me</a> link can play.
-    </div>
+    <span id="BackButton" class="material-icons" onclick="previous();">arrow_back_ios</span>
 
-    <div class="ad-copy @GetClassName()">
-        All you need to do is get a FREE personlized copy of this
-        web page, and share it with potential new players.
-    </div>
+    <div style="display:none;">
 
-    <div class="ad-copy @GetClassName()">
-        Your first two new players will roll up
-        into your sponsors network, and your network
-        begins with the third.
-    </div>
+        <div name="Question" id="Q" class="question">
 
-    <div class="ad-copy @GetClassName()">
-        That player will then roll up his first two new players
-        to you giving you 2 new players.
-    </div>
+            <div class="q-text">
+                Is this your PayPal.me user name?
+            </div>
 
-    <div class="ad-copy @GetClassName()">
-        Those 2 players will each give you 2 new players giving
-        you 4 more new players.
-    </div>
 
-    <div class="ad-copy @GetClassName()">
-        Those 4 players will each give you 2 new players giving
-        you 8 more new players. And so on, and so on...
-    </div>
+            <br />
+            <button onclick="showQuestion('Q-Y');">YES</button>
+            <button onclick="showQuestion('Q-N');">NO</button>
 
-    <div class="ad-copy @GetClassName()">
-        Warning: PayPal only has 300 million or so users who can play.
-    </div>
+        </div>
 
-    <div class="ad-copy @GetClassName()">
-        Get started by giving us your <a href="https://paypal.me/">PayPal.me</a> link name.
-    </div>
+        <div name="Question" id="Q-Y" class="question">
 
-    <table>
-        <tr>
-            <td>
+
+            <div class="q-text">
+                To Do List:
+            </div>
+
+            <ol>
+                <li>
+                    Test the blue <b style="color:blue;">@Model.UserName</b> button to see if it works.
+                </li>
+                <li>
+                    Share your page with <b style="color:blue;"><i>at least</i></b> 3 friends.
+                </li>
+                <li>
+                    Visit this page often and watch your network grow!
+                </li>
+                <li>
+                    Optional: Make <b style="color:blue;">@Model.OwnerName</b>'s day by sending a $10 gift.
+                </li>
+            </ol>
+
+            <br />
+            <button onclick="window.open('https://paypal.me/WIGIWIZ/10');">$10</button>
+            <button onclick="showQuestion('Q-Y-N');">DEMO</button>
+
+
+        </div>
+
+        <div name="Question" id="Q-Y-N" class="question">
+
+            <div class="q-text">
+                Assumptions:
+            </div>
+
+            <ol>
+                <li>
+                    New users will sponsor 1 new user each for only 3 days.
+                </li>
+                <li>
+                    There are an unlimited number of potential new users.
+                </li>
+                <li>
+                    The statement above is not true, but PayPal does have over 377 million active users.
+                </li>
+            </ol>
+
+            <br />
+
+            <br />
+            <button onclick="showQuestion('Q-Y');">PREV</button>
+            <button onclick="showQuestion('Q-Y-N-N');">NEXT</button>
+
+        </div>
+
+        <div name="Question" id="Q-Y-N-N" class="question">
+
+            <div class="q-text">
+                <div id="DayNumber" style="text-align:center; font-size:20px;">Your Day 1 User Count</div>
+                <br />
+                <div id="UserCount" style="text-align:center; font-size:32px;">0</div>
+            </div>
+
+            <br />
+            <button onclick="nextDay(-1);">PREV</button>
+            <button onclick="nextDay(1);">NEXT</button>
+
+        </div>
+
+        <div name="Question" id="Q-Y-N-N-N" class="question">
+
+            <div class="q-text">
+                <div id="DayNumber" style="text-align:center; font-size:20px;">Your Day 22 User Count</div>
+                <br />
+                <div id="UserCount" style="text-align:center; font-size:32px;">1048575</div>
+                <br />
+                <div id="DayNumber" style="text-align:center; font-size:20px;">Demo Complete</div>
+            </div>
+
+            <br />
+            <button onclick="showQuestion('Q-Y');">HOME</button>
+
+        </div>
+
+        <div name="Question" id="Q-N">
+
+            <div class="q-text">
+                Do you have a PayPal.me link?
+            </div>
+
+            <br />
+            <button onclick="showQuestion('Q-N-Y');">YES</button>
+            <button onclick="window.open('https://paypal.me/', '_blank');">NO</button>
+
+        </div>
+
+        <div name="Question" id="Q-N-Y" class="question">
+
+
+            <div style="text-align:left;">
+                <div class="q-text">
+                    Find My Page
+                </div>
+                <br />
+                <br />
+
+                <span class="q-text" style="color:grey;">
+                    https://paypal.me/???
+                </span>
+
                 <input type="text" id="UserNameInput" value="" />
-            </td>
-            <td style="width:100px;">
-                <button onclick="addUser('@Model.UserName');">SUBMIT</button>
-            </td>
-        </tr>
-    </table>
 
-    <div class="ad-copy @GetClassName()">
-        Is your name in the big blue box above? If so then this is your
-        page. Start sharing your page and building your network!!
+
+                <button onclick="addUser('WIGIWIZ');">FIND</button>
+            </div>
+
+        </div>
+
+        <div name="Question" id="Q-N-Y-N" class="question">
+
+            <div class="q-text">
+                <div class="tenor-gif-embed" data-postid="21541696" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/slap-aww-really-bruh-slapped-are-you-joking-gif-21541696">Slap Aww GIF</a>from <a href="https://tenor.com/search/slap-gifs">Slap GIFs</a></div>
+                <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+            </div>
+
+        </div>
+
+
     </div>
-
-    <div class="ad-copy @GetClassName()">
-        Query: how would you feel if people in your network
-        started sending you $10 gifts?
-    </div>
-
-    <div class="ad-copy @GetClassName()">
-        If your answer is "thrilled" then I suggest you send
-        a $10 gift using the big green button below.
-    </div>
-
-    @{ if (Model.UserName != Model.SponsorName)
-        {
-            <a class="stats-panel stats-panel-green" href="https://paypal.me/@Model.OwnerName/10">
-                <div class="stats-panel-name">@Model.OwnerName</div>
-            </a>
-        }
-
-    }
-
-    @*<a href="https://www.clearlybaked.com" class="domain-link">Funny Domain For Sale</a>*@
 
 </div>
