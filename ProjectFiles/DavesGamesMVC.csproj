@@ -250,6 +250,7 @@
     <None Include="Properties\PublishProfiles\davesgames - Web Deploy1.pubxml" />
     <Content Include="Views\ORG\Index.cshtml" />
     <None Include="Properties\PublishProfiles\davesgames - Web Deploy2.pubxml" />
+    <None Include="Properties\PublishProfiles\davesgames - Web Deploy3.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
