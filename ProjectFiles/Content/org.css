@@ -73,6 +73,7 @@ a {
     text-align: left;
     color: blue;
     font-family: sans-serif;
+    margin-bottom:10px;
 }
 
 ol {
@@ -135,6 +136,12 @@ h1 {
     color: forestgreen;
 }
 
+p{
+    text-align:left;
+    font-size:18px;
+    line-height:26px;
+}
+
 
 #BackButton {
     margin-top: 40px;
@@ -147,7 +154,9 @@ h1 {
     border: none;
 }
 
-BackButton:hover {
+#BackButton:hover {
     border: none;
     color: blue;
 }
+
+

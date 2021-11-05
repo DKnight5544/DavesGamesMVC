@@ -6,7 +6,9 @@ let BackButton;
 
 let UserCount;
 let DayNumber;
-let Day = 1;
+let Day = 0;
+
+let DayValueArray = [];
 
 function begin() {
 
@@ -15,72 +17,75 @@ function begin() {
     UserCount = document.getElementById("UserCount");
     DayNumber = document.getElementById("DayNumber");
 
+    let total = 0;
+    let newlyAdded = .5;
+    DayValueArray.push(0);
+    DayValueArray.push(0);
+    DayValueArray.push(0);
+    for (let i = 1; i < 21; i++) {
+        newlyAdded *= 2;
+        total += newlyAdded
+        DayValueArray.push(total);
+    }
+
     let nl = document.getElementsByName("Question");
     Questions = Array.from(nl);
 
-    showQuestion("Q");
+    showQuestion("HOME");
+    CurrentPage = "HOME";
 
 }
 
 function showQuestion(id) {
     let q = Questions.find(e => e.id == id);
     DisplayWindow.innerHTML = q.innerHTML;
-    BackButton.style.display = (id == "Q" || id == "Q-Y-N-N-N") ? "none" : "block";
+    BackButton.style.display = (id == "HOME" || id == "DAY22") ? "none" : "block";
     CurrentPage = id;
 }
 
 function previous() {
-    let len = CurrentPage.length - 2;
-    let prevPage = CurrentPage.substr(0, len);
+
+    let prevPage;
+
+    if (CurrentPage == "USER01") prevPage = "HOME";
+    else if (CurrentPage == "GUEST01") prevPage = "HOME";
+    else if (CurrentPage == "GUEST02") prevPage = "GUEST01";
+    else if (CurrentPage == "DEMO-01") prevPage = "USER01";
+    else if (CurrentPage == "DEMO-02") prevPage = "DEMO-01";
+    else if (CurrentPage == "DEMO-03") prevPage = "DEMO-02";
+    else if (CurrentPage == "DEMO-04") prevPage = "DEMO-03";
+    else if (CurrentPage == "DAY01") prevPage = "DEMO-04";
+    else if (CurrentPage == "DAY22") prevPage = "DAY01";
+    else if (CurrentPage == "") prevPage = "";
+    else prevPage = "HOME";
+
     showQuestion(prevPage);
+}
+
+function dayOne() {
+    Day = 0;
+    nextDay(1);
 }
 
 function nextDay(offset) {
 
-    let userCount;
-
     Day += offset;
-    if (Day < 1) {
-        Day = 1;
-        DayNumber.innerHTML = "Your Day " + Day + " User Count";
-        UserCount.innerHTML = 0;
-        showQuestion("Q-Y");
-        return;
-    }
 
-    else if (Day == 1) userCount = 0;
-    else if (Day == 2) userCount = 0;
-    else if (Day == 3) userCount = 1;
-    else if (Day == 4) userCount = 3;
-    else if (Day == 5) userCount = 7;
-    else if (Day == 6) userCount = 15;
-    else if (Day == 7) userCount = 31;
-    else if (Day == 8) userCount = 63;
-    else if (Day == 9) userCount = 127;
-    else if (Day == 10) userCount = 255;
-    else if (Day == 11) userCount = 511;
-    else if (Day == 12) userCount = 1023;
-    else if (Day == 13) userCount = 2047;
-    else if (Day == 14) userCount = 4095;
-    else if (Day == 15) userCount = 8191;
-    else if (Day == 16) userCount = 16383;
-    else if (Day == 17) userCount = 32767;
-    else if (Day == 18) userCount = 65535;
-    else if (Day == 19) userCount = 131071;
-    else if (Day == 20) userCount = 262143;
-    else if (Day == 21) userCount = 524287;
-    else if (Day == 22) userCount = 1048575;
-    else {
-        Day = 1;
-        DayNumber.innerHTML = "Your Day " + Day + " User Count";
-        UserCount.innerHTML = 0;
-        showQuestion("Q-Y-N-N-N");
+    if (Day == 0) {
+        showQuestion("DEMO-04");
         return;
-    }
+    }    
 
     DayNumber.innerHTML = "Your Day " + Day + " User Count";
-    UserCount.innerHTML = userCount;
-    showQuestion("Q-Y-N-N");
+    UserCount.innerHTML = DayValueArray[Day];
+
+    if (Day == 22) {
+        showQuestion("DAY22");
+    } else {
+        showQuestion("DAY01");
+    }
+
+
 }
 
 

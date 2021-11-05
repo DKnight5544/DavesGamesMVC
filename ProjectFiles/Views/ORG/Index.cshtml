@@ -26,153 +26,186 @@
     </div>
 
     <span id="BackButton" class="material-icons" onclick="previous();">arrow_back_ios</span>
+</div>
 
-    <div style="display:none;">
+@*-- Hidden Section -------------------------------------------------------------------*@
 
-        <div name="Question" id="Q" class="question">
+<div style="display:none;">
 
+    <div name="Question" id="HOME" class="question">
+
+        <div class="q-text" style="text-align:center;">
+            Is this your page?
+        </div>
+
+
+        <br />
+        <button onclick="showQuestion('USER01');">YES</button>
+        <button onclick="showQuestion('GUEST01');">NO</button>
+
+    </div>
+
+    <div name="Question" id="GUEST01">
+
+        <div class="q-text" style="text-align:center;">
+            Do you have
+        </div>
+        <div class="q-text" style="text-align:center;">
+            a PayPal.me link?
+        </div>
+
+        <br />
+        <button onclick="showQuestion('GUEST02');">YES</button>
+        <button onclick="window.open('https://paypal.me/', '_blank');">NO</button>
+
+    </div>
+
+    <div name="Question" id="GUEST02" class="question">
+
+
+        <div>
             <div class="q-text" style="text-align:center;">
-                Is this your page?
+                Let's find your page.
             </div>
-
-
             <br />
-            <button onclick="showQuestion('Q-Y');">YES</button>
-            <button onclick="showQuestion('Q-N');">NO</button>
-
-        </div>
-
-        <div name="Question" id="Q-Y" class="question">
-
-
-            <div class="q-text">
-                To Do List:
-            </div>
-
-            <ol>
-                <li>
-                    Test your blue button to see if it works.
-                </li>
-                <li>
-                    Share your page with at least 3 friends.
-                </li>
-                <li>
-                    Visit this page often and watch your network grow!
-                </li>
-                <li>
-                    Optional: Send @Model.OwnerName a small gift.
-                </li>
-            </ol>
-
             <br />
-            <button onclick="window.open('https://paypal.me/@Model.OwnerName/');">GIFT</button>
-            <button onclick="showQuestion('Q-Y-N');">DEMO</button>
 
+            <span class="q-text" style="color:grey;">
+                https://paypal.me/???
+            </span>
+
+            <input type="text" id="UserNameInput" value="" />
+
+            <button onclick="addUser('@Model.UserName');">FIND</button>
 
         </div>
 
-        <div name="Question" id="Q-Y-N" class="question">
+    </div>
 
-            <div class="q-text">
-                Facts:
-            </div>
+    <div name="Question" id="USER01" class="question">
 
-            <ol>
-                <li>
-                    The goal of this <b>free</b> website is to put your GIFT button in front
-                    of as many potential givers as possible.
-                </li>
-                <li>
-                    Your only job is to share your page with a few freinds and
-                    let the system do the rest.
-                </li>
-                <li>
-                    This demo assumes than each new user can invite 1 new user per day for 3 days.
-                </li>
-                <li>
-                    PayPal only has a little over 377 million active users so not everyone
-                    will get these results.
-                </li>
-            </ol>
 
+        <div class="q-text">
+            To Do List:
+        </div>
+
+        <ol>
+            <li>
+                Test your blue button to see if it works.
+            </li>
+            <li>
+                Share your page with at least 3 friends.
+            </li>
+            <li>
+                Visit this page often and watch your network grow!
+            </li>
+            <li>
+                Optional: Send @Model.OwnerName a small gift.
+            </li>
+        </ol>
+
+        <br />
+        <button onclick="window.open('https://paypal.me/@Model.OwnerName/');">GIFT</button>
+        <button onclick="showQuestion('DEMO-01');">DEMO</button>
+
+
+    </div>
+
+    <div name="Question" id="DEMO-01" class="question">
+
+        <div class="q-text">
+            Fact:
+        </div>
+
+        <p>
+            The goal of this <b>free</b> website is to put <b>your</b> gift button in front
+            of as many potential givers as possible.
+        </p>
+
+        <br />
+
+        <button onclick="showQuestion('DEMO-02');">NEXT</button>
+
+    </div>
+
+    <div name="Question" id="DEMO-02" class="question">
+
+        <div class="q-text">
+            Fact:
+        </div>
+
+        <p>
+            Your only task is to share this <b>free</b> page with
+            at least 3 friends, then sit back and watch your network grow.
+        </p>
+
+        <br />
+
+        <button onclick="showQuestion('DEMO-03');">NEXT</button>
+
+    </div>
+
+    <div name="Question" id="DEMO-03" class="question">
+
+        <div class="q-text">
+            Assumption:
+        </div>
+
+        <p>
+            Let's assume, for the demo, that each new user can
+            add 1 new user per day for 3 days.
+        </p>
+
+        <br />
+
+        <button onclick="showQuestion('DEMO-04');">NEXT</button>
+
+    </div>
+
+    <div name="Question" id="DEMO-04" class="question">
+
+        <div class="q-text">
+            Disclaimer:
+        </div>
+
+        <p>
+            PayPal only has a little over 377 million active users
+            so your mileage will vary...
+        </p>
+
+        <br />
+
+        <button onclick="dayOne();">NEXT</button>
+
+    </div>
+
+    <div name="Question" id="DAY01" class="question">
+
+        <div class="q-text">
+            <div id="DayNumber" style="text-align:center; font-size:20px;">Your Day 1 User Count</div>
             <br />
-            <button onclick="showQuestion('Q-Y');">PREV</button>
-            <button onclick="showQuestion('Q-Y-N-N');">NEXT</button>
-
+            <div id="UserCount" style="text-align:center; font-size:32px;">0</div>
         </div>
 
-        <div name="Question" id="Q-Y-N-N" class="question">
+        <br />
+        <button onclick="nextDay(-1);">PREV</button>
+        <button onclick="nextDay(1);">NEXT</button>
 
-            <div class="q-text">
-                <div id="DayNumber" style="text-align:center; font-size:20px;">Your Day 1 User Count</div>
-                <br />
-                <div id="UserCount" style="text-align:center; font-size:32px;">0</div>
-            </div>
+    </div>
 
+    <div name="Question" id="DAY22" class="question">
+
+        <div class="q-text">
+            <div id="DayNumber" style="text-align:center; font-size:20px;">Your Day 22 User Count</div>
             <br />
-            <button onclick="nextDay(-1);">PREV</button>
-            <button onclick="nextDay(1);">NEXT</button>
-
-        </div>
-
-        <div name="Question" id="Q-Y-N-N-N" class="question">
-
-            <div class="q-text">
-                <div id="DayNumber" style="text-align:center; font-size:20px;">Your Day 22 User Count</div>
-                <br />
-                <div id="UserCount" style="text-align:center; font-size:32px;">1048575</div>
-                <br />
-                <div id="DayNumber" style="text-align:center; font-size:20px;">Demo Complete</div>
-            </div>
-
+            <div id="UserCount" style="text-align:center; font-size:32px;">1048575</div>
             <br />
-            <button onclick="showQuestion('Q-Y');">HOME</button>
-
+            <div id="DayNumber" style="text-align:center; font-size:20px;">Demo Complete</div>
         </div>
 
-        <div name="Question" id="Q-N">
+        <br />
 
-            <div class="q-text" style="text-align:center;">
-                Do you have a PayPal.me link?
-            </div>
-
-            <br />
-            <button onclick="showQuestion('Q-N-Y');">YES</button>
-            <button onclick="window.open('https://paypal.me/', '_blank');">NO</button>
-
-        </div>
-
-        <div name="Question" id="Q-N-Y" class="question">
-
-
-            <div>
-                <div class="q-text" style="text-align:center;">
-                    Let's find your page.
-                </div>
-                <br />
-                <br />
-
-                <span class="q-text" style="color:grey;">
-                    https://paypal.me/???
-                </span>
-
-                <input type="text" id="UserNameInput" value="" />
-
-
-                <button onclick="addUser('@Model.UserName');">FIND</button>
-            </div>
-
-        </div>
-
-        <div name="Question" id="Q-N-Y-N" class="question">
-
-            <div class="q-text">
-                <div class="tenor-gif-embed" data-postid="21541696" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/slap-aww-really-bruh-slapped-are-you-joking-gif-21541696">Slap Aww GIF</a>from <a href="https://tenor.com/search/slap-gifs">Slap GIFs</a></div>
-                <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-            </div>
-
-        </div>
-
+        <button onclick="showQuestion('USER01');">HOME</button>
 
     </div>
 
