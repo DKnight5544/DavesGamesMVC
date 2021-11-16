@@ -1,9 +1,6 @@
 ﻿@model DavesGamesMVC.DatabaseAccess.ChainLetter.UserModel
-        
-<div class="container">
 
-    @*<img src="~/Content/Images/DomainForSale02.jpg"
-        onclick="window.location.href = 'https://www.clearlybaked.com'" />*@
+<div class="container">
 
     <div id="banner">Virtual Chain Letter</div>
 
@@ -14,54 +11,43 @@
         }
     }
 
-    <a href="@IsDashes(Model.u5Name)" class="user">@Model.u5Name</a>
-    <a href="@IsDashes(Model.u4Name)" class="user">@Model.u4Name</a>
-    <a href="@IsDashes(Model.u3Name)" class="user">@Model.u3Name</a>
-    <a href="@IsDashes(Model.u2Name)" class="user">@Model.u2Name</a>
-    <a href="@IsDashes(Model.u1Name)" class="user">@Model.u1Name</a>
-    <a href="@IsDashes(Model.UserName)" class="user focused">@Model.UserName (Page Owner)</a>
+    <div class="user">@Model.u5Name</div>
+    <div class="user">@Model.u4Name</div>
+    <div class="user">@Model.u3Name</div>
+    <div class="user">@Model.u2Name</div>
+    <div class="user">@Model.u1Name</div>
+    <div class="user">@Model.UserName</div>
 
-    <div class="ad-copy blue">
-        Would you like the <i>possibility</i> of receiving multiple $10 gifts via PayPal?
-    </div>
-    <div class="ad-copy red">
-        Step 1: Get a free <a href="https://paypal.me/">PayPal.me</a> account
-        if you don't already have one.
-    </div>
-    <div class="ad-copy blue">
-        Step 2: Enter your PayPal.me link name and get a free
-        personlized copy of this page.
-    </div>
+    <input type="text" id="UserNameInput" value="" />
 
-    <table>
-        <tr>
-            <td>
-                <input type="text" id="UserNameInput" value="" />
-            </td>
-            <td style="width:100px;">
-                <button onclick="addUser('@Model.UserName');">SUBMIT</button>
-            </td>
-        </tr>
-    </table>
+    <br />
 
-    <div class="ad-copy green">
-        Step 3: Share your page with at least five (5) others who do the same.
-    </div>
+    <button onclick="addUser('@Model.UserName');">ADD</button>
 
+    <p style="border:2px dashed blue; color:blue;">
+        This is a virtual chain letter designed for
+        users of the Cash App.
+    </p>
 
-    <div class="ad-copy red">
-        Step 4. Optionally give $10 gifts to the people on your list.
-    </div>
+    <p>
+        To play, just add your $cashtag to the bottom of the
+        list.  It's Free!
+    </p>
 
-    <div class="ad-copy green">
-        Here are some reasons to give:
-    </div>
+    <p>
+        With your $cashtag in the bottom position, just share
+        this page with as many Cash App users as possible.
+    </p>
 
-    <div class="ad-copy red">You will make someone's day!</div>
-    <div class="ad-copy blue">You will experience joy!</div>
-    <div class="ad-copy green">Your kids may start doing their chores. But not likely.</div>
-    <div class="ad-copy red">Giving prevents covid-19.</div>
-    <div class="ad-copy blue">Giving prevents hair loss.</div>
-    <div class="ad-copy green">Giving prevents sudden rapid weight gain.</div>
+    <p>
+        By the time your $cashtag reaches the top of the
+        list, it may have been seen by thousands of Cash
+        App users!
+    </p>
+
+    <p style="border:2px dashed red; color:red;">
+        Wouldn't it be cool if everyone decided to send
+        $5 gifts to the other users on their list?
+    </p>
 
 </div>

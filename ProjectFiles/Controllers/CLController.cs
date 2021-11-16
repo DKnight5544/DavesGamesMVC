@@ -10,13 +10,13 @@ namespace DavesGamesMVC.Controllers
     public class CLController : Controller
     {
         // GET: CL
-        public ActionResult Index(string id)
+        public ActionResult Index(string id = "$JavaScriptGuru")
         {
             ViewBag.Title = "Virtual Chain Letter";
             ViewBag.CSS = "~/Content/cl.css";
             ViewBag.JS = "~/Scripts/cl.js";
 
-            string userName = string.IsNullOrWhiteSpace(id) ? "wigiwiz" : id;
+            string userName = id;
             UserModel user;
             string connStr = Environment.GetEnvironmentVariable("DWKDBConnectionString");
 
