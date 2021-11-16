@@ -145,11 +145,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DWKDB.dbml</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseAccess\TheOrg\DWKDB.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DWKDB.dbml</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -157,7 +152,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\org.css" />
     <Content Include="Content\D2D.css" />
     <Content Include="Content\cl.css" />
     <Content Include="Content\Home.css" />
@@ -193,7 +187,6 @@
     <Content Include="Content\SliderPuzzleCustomizations\VeryLikely.jpg" />
     <Content Include="Content\SliderPuzzleCustomizations\VeryLikely.js" />
     <Content Include="Content\SudokuSolver.css" />
-    <Content Include="Scripts\org.js" />
     <Content Include="Scripts\cl.js" />
     <Content Include="Scripts\Home.js" />
     <Content Include="Scripts\GameOfLife.js" />
@@ -220,7 +213,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\SFD\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DatabaseAccess\ChainLetter\DWKDB.dbml">
@@ -229,14 +221,6 @@
       <SubType>Designer</SubType>
     </Content>
     <None Include="DatabaseAccess\ChainLetter\DWKDB.dbml.layout">
-      <DependentUpon>DWKDB.dbml</DependentUpon>
-    </None>
-    <Content Include="DatabaseAccess\TheOrg\DWKDB.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>DWKDB.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
-    <None Include="DatabaseAccess\TheOrg\DWKDB.dbml.layout">
       <DependentUpon>DWKDB.dbml</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -248,7 +232,6 @@
     <None Include="Properties\PublishProfiles\davesgames - Web Deploy.pubxml" />
     <Content Include="Views\CL\Index.cshtml" />
     <None Include="Properties\PublishProfiles\davesgames - Web Deploy1.pubxml" />
-    <Content Include="Views\ORG\Index.cshtml" />
     <None Include="Properties\PublishProfiles\davesgames - Web Deploy2.pubxml" />
     <None Include="Properties\PublishProfiles\davesgames - Web Deploy3.pubxml" />
   </ItemGroup>

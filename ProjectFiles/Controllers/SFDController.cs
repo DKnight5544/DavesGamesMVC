@@ -21,8 +21,10 @@ namespace DavesGamesMVC.Controllers
             ViewBag.MoveJS = "~/Scripts/Move.js";
             ViewBag.GridString = "01020304050607080910111213141516171819202122232425";
             ViewBag.AboutDisplayStatus = "inline-block";
+
             //In shared folder
             return View("SFD");
+
         }
     }
 }
