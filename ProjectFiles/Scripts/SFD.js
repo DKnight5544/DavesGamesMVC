@@ -9,9 +9,6 @@ function begin() {
 
     global.gridString = document.getElementById("gridString");
     global.aboutDisplayStatus = document.getElementById("aboutDisplayStatus");
-    global.aboutContainer = document.getElementById("aboutContainer");
-
-    global.aboutContainer.style.display = global.aboutDisplayStatus.value;
 
     buildHTML();
 
@@ -28,11 +25,6 @@ function begin() {
 
     if (global.gridString.value === SOLVED) scramble();
 
-}
-
-function closeAbout(sender) {
-    sender.parentElement.style.display = "none";
-    document.getElementById("aboutDisplayStatus").value = "none";
 }
 
 function runUserCode() {
@@ -107,7 +99,6 @@ function isValidRandomMove(rnd, last_rnd) {
 
     return true;
 }
-
 
 function swap1(direction) {
 
@@ -331,7 +322,7 @@ function buildHTML() {
     let moveButton;
     moveButton = document.createElement("button");
     moveButton.className = "board_btn board_btn_shuffle";
-    moveButton.innerHTML = "move()";
+    moveButton.innerHTML = "Move";
     moveButton.onclick = function () {
         runUserCode();
     }
@@ -341,14 +332,14 @@ function buildHTML() {
     let animButton;
     animButton = document.createElement("button");
     animButton.className = "board_btn board_btn_shuffle";
-    animButton.innerHTML = "animate()";
+    animButton.innerHTML = "Animate";
     animButton.onclick = function () {
-        if (animButton.innerHTML == "animate()") {
-            animButton.innerHTML = "stopAnimation()";
+        if (animButton.innerHTML == "Animate") {
+            animButton.innerHTML = "Stop";
             global.timer = setInterval(runUserCode, 200);
         }
         else {
-            animButton.innerHTML = "animate()";
+            animButton.innerHTML = "Animate";
             clearInterval(global.timer);
         }
     }
@@ -358,14 +349,14 @@ function buildHTML() {
     // Scramble Button
     scrambleButton = document.createElement("button");
     scrambleButton.className = "board_btn board_btn_shuffle";
-    scrambleButton.innerHTML = "scramble()";
+    scrambleButton.innerHTML = "Scramble";
     scrambleButton.onclick = function () { scramble(); }
     mainContainerElement.appendChild(scrambleButton);
 
     // select File Button
     let selectFileButton = document.createElement("button");
     selectFileButton.className = "board_btn board_btn_shuffle";
-    selectFileButton.innerHTML = "uploadScript()";
+    selectFileButton.innerHTML = "Upload Script";
     selectFileButton.id = "selectFileButton";
     selectFileButton.onclick = function () {
         let fileInput = document.getElementById("fileInput");
@@ -375,28 +366,28 @@ function buildHTML() {
     mainContainerElement.appendChild(selectFileButton);
 
 
-    // saveButton Button
-    let saveButton = document.createElement("button");
-    saveButton.className = "board_btn board_btn_shuffle";
-    saveButton.innerHTML = "savePuzzle()";
-    saveButton.id = "saveButton";
-    saveButton.onclick = function () {
-        global.bookmark = global.gridString.value;
-        alert("Puzzle Saved");
-    }
+    //// saveButton Button
+    //let saveButton = document.createElement("button");
+    //saveButton.className = "board_btn board_btn_shuffle";
+    //saveButton.innerHTML = "savePuzzle()";
+    //saveButton.id = "saveButton";
+    //saveButton.onclick = function () {
+    //    global.bookmark = global.gridString.value;
+    //    alert("Puzzle Saved");
+    //}
 
-    mainContainerElement.appendChild(saveButton);
+    //mainContainerElement.appendChild(saveButton);
 
-    // restore Puzzle Button
-    let restoreButton = document.createElement("button");
-    restoreButton.className = "board_btn board_btn_shuffle";
-    restoreButton.innerHTML = "restorePuzzle()";
-    restoreButton.id = "restoreButton";
-    restoreButton.onclick = function () {
-        if (global.bookmark) setGrid(global.bookmark);
-    }
+    //// restore Puzzle Button
+    //let restoreButton = document.createElement("button");
+    //restoreButton.className = "board_btn board_btn_shuffle";
+    //restoreButton.innerHTML = "restorePuzzle()";
+    //restoreButton.id = "restoreButton";
+    //restoreButton.onclick = function () {
+    //    if (global.bookmark) setGrid(global.bookmark);
+    //}
 
-    mainContainerElement.appendChild(restoreButton);
+    //mainContainerElement.appendChild(restoreButton);
 
 }
 

@@ -131,7 +131,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\ORG.cs" />
     <Compile Include="Controllers\CLController.cs" />
     <Compile Include="Controllers\GameOfLifeController.cs" />
     <Compile Include="Controllers\SFDUCController.cs" />
