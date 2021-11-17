@@ -5,9 +5,13 @@
     <div id="banner">Virtual Chain Letter</div>
 
     @{
-        string IsDashes(string name)
+        string Payee()
         {
-            return name == "---" ? "" : string.Format("https://paypal.me/{0}/10", name);
+            if (Model.u5Name.Contains("$")) return Model.u5Name;
+            else if (Model.u4Name.Contains("$")) return Model.u4Name;
+            else if (Model.u3Name.Contains("$")) return Model.u3Name;
+            else if (Model.u2Name.Contains("$")) return Model.u2Name;
+            else return Model.u1Name;
         }
     }
 
@@ -16,7 +20,7 @@
     <div class="user">@Model.u3Name</div>
     <div class="user">@Model.u2Name</div>
     <div class="user">@Model.u1Name</div>
-    <div class="user">@Model.UserName</div>
+    <div class="user focused">@Model.UserName</div>
 
     <input type="text" id="UserNameInput" value="" />
 
@@ -35,23 +39,35 @@
     </p>
 
     <p>
-        With your $cashtag in the bottom position, just share
-        this page with as many Cash App users as possible.
+        If you are <b>@Model.UserName</b>, then this
+        list belongs to you.
     </p>
 
     <p>
-        Each new generation of players will push your
+        Just share your list with as many other Cash App
+        users as you can.
+    </p>
+
+    <p>
+        Each new generation of users will push your
         $cashtag towards the top of the list.
     </p>
 
     <p>
-        This process means your $cashtag may be
-        seen by serveral thousand Cash App users!
+        This could mean that thousands of Cash App
+        users will see your $cashtag.
     </p>
 
-    <p style="border:2px dashed red; color:red;">
-        Wouldn't it be cool if everyone sent
-        $10 to the person at the top of their list?
+    <p>
+        What if some of them sent <b>@Model.UserName</b> a $10 gift?
     </p>
+
+    @{ if (Payee().Contains("$"))
+        {
+            <p style="border: 2px dashed blue; color: blue;">
+                Wouldn't it be cool if <b>@Model.UserName </b>sent $10 to <b>@Payee()</b>?;
+            </p>
+        }
+    }
 
 </div>
