@@ -34,40 +34,32 @@
     </p>
 
     <p>
-        To play, just add your $cashtag to the bottom of the
-        list.  It's Free!
+        First, add your $cashtag to the list above
+        and we will create a list for you.
     </p>
 
     <p>
-        If you are <b>@Model.UserName</b>, then this
-        list belongs to you.
+        Your list will be the one with your $cashtag
+        in the blue box.
     </p>
 
     <p>
-        Just share your list with as many other Cash App
-        users as you can.
+        Share your list with as many Cash App users as
+        you can.  There are over 30 million of them.
     </p>
 
     <p>
-        Each new generation of users will push your
-        $cashtag towards the top of the list.
+        Over time, your $cashtag could be seen by thousands,
+        maybe even millions of Cash App users.
     </p>
 
-    <p>
-        This could mean that thousands of Cash App
-        users will see your $cashtag.
+    <p style="border: 2px dashed blue; color: blue;">
+        What if some of them sent you a small cash gift?
     </p>
 
-    <p>
-        What if some of them sent <b>@Model.UserName</b> a $10 gift?
+    <p style="border: 2px dashed blue; color: blue;">
+        What if you sent a small cash gift to the 
+        users on your list?
     </p>
-
-    @{ if (Payee().Contains("$"))
-        {
-            <p style="border: 2px dashed blue; color: blue;">
-                Wouldn't it be cool if <b>@Model.UserName </b>sent $10 to <b>@Payee()</b>?;
-            </p>
-        }
-    }
 
 </div>
