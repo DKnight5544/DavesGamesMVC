@@ -13,12 +13,11 @@ b, strong {
 
 .main_container {
     position: relative;
-    width: 100%;
-    max-width: 700px;
+    width: 450px;
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    padding: 0px;
+    padding: 10px;
     /*background-color:green;*/
     border: none;
 }
@@ -40,7 +39,7 @@ b, strong {
 
 .board_td {
     width: 20%;
-    height: 100px;
+    height: 80px;
     font-size: 35px;
     background-color: dodgerblue;
     color: white;
