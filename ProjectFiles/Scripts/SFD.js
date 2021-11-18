@@ -49,7 +49,7 @@ function runUserCode() {
     if ("LRUD".includes(userMove)) swap1(userMove);
     else {
         clearInterval(global.timer);
-        global.animButton.innerHTML = "animate()";
+        global.animButton.innerHTML = "Animate";
     }
 
     global.lastMoveLabel.innerHTML = "Last Move: " + userMove;
