@@ -107,3 +107,14 @@ iframe {
     border-right: 2px solid dodgerblue;
     border-bottom: 2px solid dodgerblue;
 }
+
+.log {
+    margin-top: 10px;
+    width: 100%;
+    height: 400px;
+    box-sizing: border-box;
+    border: 2px solid dodgerblue;
+    font-size: 12px;
+    padding:10px;
+    box-sizing:border-box;
+}

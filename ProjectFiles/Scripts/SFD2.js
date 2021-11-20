@@ -13,6 +13,8 @@ function begin() {
     global.lastMoveLabel = document.getElementById("LastMoveLabel");
     global.animButton = document.getElementById("AnimateButton");
     global.urlInput = document.getElementById("GamebotUrl");
+    global.log = document.getElementById("Log");
+
 
     global.animButton.onclick =
         function () {
@@ -54,6 +56,33 @@ function begin() {
 function runUserCode() {
 
     let userMove;
+
+    if (global.cache.length == 0) {
+
+        let url = global.urlInput.value; 
+
+        if (!url.endsWith("/")) url += "/";
+
+        url += global.gridString;
+
+        fetch(url).then(function (response) {
+            // The API call was successful!
+            if (response.ok) {
+                return response.text();
+            } else {
+                return Promise.reject(response);
+            }
+        }).then(function (data) {
+            // This is the JSON from our response
+            global.cache += data;
+            global.log.innerHTML += "<p>SND: " + global.gridString + "</p><p>RCV: " + data + "</p><hr>";
+            runUserCode();
+        }).catch(function (err) {
+            // There was an error
+            console.warn('Something went wrong.', err);
+        });
+    }
+
 
     if (global.cache.length == 0) {
         let response = move(global.gridString);
