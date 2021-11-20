@@ -1,0 +1,30 @@
+﻿
+
+
+<div class="main_container" id="boardContainer">
+</div>
+
+<div class="main_container">
+
+    <table class="stats_table">
+        <tr>
+            <td class="stats_td">
+                <span id="MoveCountLabel">Move Count: 0</span>
+            </td>
+            <td class="stats_td">
+                <span id="LastMoveLabel">Last Move: --</span>
+            </td>
+        </tr>
+    </table>
+
+    <button onclick="runUserCode();">Move</button>
+    <button id="AnimateButton" class="board_btn board_btn_shuffle">Animate</button>
+    <button onclick="scramble();">Scramble</button>
+
+    @*<div class="gamebot_url">Gamebot URL</div>*@
+    <input id="GamebotUrl" type="url" value="/RonWeasly" />
+
+    <iframe id ="iframe1" scrolling="no"></iframe>
+
+</div>
+
