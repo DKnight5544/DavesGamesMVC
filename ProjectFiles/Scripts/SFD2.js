@@ -71,7 +71,13 @@ function runUserCode() {
         }).then(function (data) {
             // This is the JSON from our response
             global.cache += data;
-            global.log.innerHTML += "<p>SND: " + global.gridString + "</p><p>RCV: " + data + "</p><hr>";
+
+            global.log.innerHTML = "<p>SND: "
+                + global.gridString
+                + "</p><p>RCV: "
+                + data + "</p><hr>"
+                + global.log.innerHTML;
+
             runUserCode();
         }).catch(function (err) {
             // There was an error
