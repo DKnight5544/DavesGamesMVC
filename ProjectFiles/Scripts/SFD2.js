@@ -124,6 +124,7 @@ function scramble() {
     global.lastMoveLabel.innerHTML = "Last Move: --";
     global.moveCountLabel.innerHTML = "Move Count: 0";
     global.moveCount = 0;
+    global.log.innerHTML = "";
 }
 
 function randomNumber(min, max) {
