@@ -133,7 +133,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CLController.cs" />
     <Compile Include="Controllers\GameOfLifeController.cs" />
-    <Compile Include="Controllers\RonWeasley.cs" />
     <Compile Include="Controllers\SFD2.cs" />
     <Compile Include="Controllers\SFDUCController.cs" />
     <Compile Include="Controllers\SFDController.cs" />
@@ -155,10 +154,8 @@
   <ItemGroup>
     <Content Include="Content\D2D.css" />
     <Content Include="Content\cl.css" />
-    <Content Include="Content\GamebotAvatars\Weasly01.jpeg" />
     <Content Include="Content\Home.css" />
     <Content Include="Content\GameOfLife.css" />
-    <Content Include="Content\RonWeasley.css" />
     <Content Include="Content\SFD2.css" />
     <Content Include="Content\SFD.css" />
     <Content Include="Content\SliderPuzzle.css" />
@@ -195,7 +192,6 @@
     <Content Include="Scripts\Home.js" />
     <Content Include="Scripts\GameOfLife.js" />
     <Content Include="Scripts\Move.js" />
-    <Content Include="Scripts\RonWeasley.js" />
     <Content Include="Scripts\SFD2.js" />
     <Content Include="Scripts\SFD.js" />
     <Content Include="Scripts\SliderPuzzle.js" />
@@ -241,7 +237,6 @@
     <None Include="Properties\PublishProfiles\davesgames - Web Deploy2.pubxml" />
     <None Include="Properties\PublishProfiles\davesgames - Web Deploy3.pubxml" />
     <Content Include="Views\SFD2\Index.cshtml" />
-    <Content Include="Views\RonWeasley\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

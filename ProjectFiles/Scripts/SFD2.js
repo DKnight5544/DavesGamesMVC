@@ -59,11 +59,7 @@ function runUserCode() {
 
     if (global.cache.length == 0) {
 
-        let url = global.urlInput.value; 
-
-        if (!url.endsWith("/")) url += "/";
-
-        url += global.gridString;
+        let url = global.urlInput.value + global.gridString;
 
         fetch(url).then(function (response) {
             // The API call was successful!
@@ -81,12 +77,8 @@ function runUserCode() {
             // There was an error
             console.warn('Something went wrong.', err);
         });
-    }
 
-
-    if (global.cache.length == 0) {
-        let response = move(global.gridString);
-        global.cache += response;
+        return false;
     }
 
     userMove = global.cache.substr(0, 1);
