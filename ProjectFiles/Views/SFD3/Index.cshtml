@@ -1,0 +1,32 @@
+﻿
+
+
+<div class="main_container">
+
+    <div id="boardContainer"></div>
+
+    <table class="stats_table">
+        <tr>
+            <td class="stats_td">
+                <span id="MoveCountLabel">Move Count: 0</span>
+            </td>
+            <td class="stats_td">
+                <span id="LastMoveLabel">Last Move: --</span>
+            </td>
+        </tr>
+    </table>
+
+    <button onclick="runUserCode();">Move</button>
+    <button id="AnimateButton">Animate</button>
+    <button onclick="scramble();">Scramble</button>
+    <button onclick="resetButton();">Reset</button>
+
+</div>
+
+<div class="main_container">
+
+    @*<div class="gamebot_url">Gamebot URL</div>*@
+    <input id="GridStringInput" type="url" value="" />
+    <textarea id="MoveArea"></textarea>
+</div>
+
