@@ -66,19 +66,28 @@ function runUserCode() {
             if (response.ok) {
                 return response.text();
             } else {
+                clearInterval(global.timer);
+                global.animButton.innerHTML = "Animate";
                 return Promise.reject(response);
             }
         }).then(function (data) {
             // This is the JSON from our response
-            global.cache += data;
 
-            global.log.innerHTML = "<p>SND: "
-                + global.gridString
-                + "</p><p>RCV: "
-                + data + "</p><hr>"
-                + global.log.innerHTML;
+            if (data.length == 0) {
+                clearInterval(global.timer);
+                global.animButton.innerHTML = "Animate";
+            }
 
-            runUserCode();
+            else {
+                global.cache += data;
+                global.log.innerHTML = "<p>SND: "
+                    + global.gridString
+                    + "</p><p>RCV: "
+                    + data + "</p><hr>"
+                    + global.log.innerHTML;
+                processMoveFromCache();
+            }
+
         }).catch(function (err) {
             // There was an error
             console.warn('Something went wrong.', err);
@@ -87,23 +96,24 @@ function runUserCode() {
         return false;
     }
 
+    else {processMoveFromCache();}
+
+    
+
+}
+
+function processMoveFromCache() {
+
     userMove = global.cache.substr(0, 1);
     global.cache = global.cache.substr(1);
 
-    if (userMove == undefined) userMove = "?";
-
+    if ("LRUD".includes(userMove)) {
+        swap1(userMove)
+        global.lastMoveLabel.innerHTML = "Last Move: " + userMove;
+    }
 
     global.moveCount++;
     global.moveCountLabel.innerHTML = "Move Count: " + global.moveCount;
-
-
-    if ("LRUD".includes(userMove)) swap1(userMove);
-    else {
-        clearInterval(global.timer);
-        global.animButton.innerHTML = "Animate";
-    }
-
-    global.lastMoveLabel.innerHTML = "Last Move: " + userMove;
 
 }
 
@@ -115,9 +125,9 @@ function scramble() {
     for (let i = 0; i < 1000; i++) {
 
         let rnd = randomNumber(0, 3);
-        
-        while (!isValidRandomMove(rnd, last_rnd)){
-            rnd = randomNumber(0, 4);            
+
+        while (!isValidRandomMove(rnd, last_rnd)) {
+            rnd = randomNumber(0, 4);
         }
 
         last_rnd = rnd;

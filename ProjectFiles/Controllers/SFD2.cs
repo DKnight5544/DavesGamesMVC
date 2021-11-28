@@ -14,7 +14,7 @@ namespace DavesGamesMVC.Controllers
         {
             ViewBag.Title = "Slider For Devs";
             ViewBag.CSS = "~/Content/SFD2.css";
-            ViewBag.JS = "~/Scripts/SFD2.js";
+            ViewBag.JS = "~/Scripts/SFD2.js?" + DateTime.Now.Ticks.ToString();
 
             return View();
 
