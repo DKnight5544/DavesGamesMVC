@@ -6,6 +6,15 @@
     <title>@ViewBag.Title</title>
     @Styles.Render(ViewBag.CSS)
     @Scripts.Render(ViewBag.JS)
+    @{
+        string cssName = ViewBag.CSS;
+        if (cssName.EndsWith("TimerToys.css"))
+        {
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,600&display=swap" rel="stylesheet">
+        }
+    }
 </head>
 <body onload="begin();">
     <div>

@@ -1,0 +1,114 @@
+﻿html, body {
+    margin: 0;
+    padding: 0;
+    font-family: monospace;
+    margin-bottom: 20px;
+}
+
+#banner {
+    width: 100%;
+    font-family: 'Nunito', sans-serif;
+    font-size: 30px;
+    background-color: black;
+    color: white;
+    padding: 3px;
+    padding-left: 5px;
+    box-sizing: border-box;
+    margin-bottom: 0px;
+}
+
+    #banner:focus {
+        background-color:lightgray;
+        color:black;
+    }
+
+input {
+    cursor: pointer;
+    text-decoration: none;
+    text-align: left;
+}
+
+
+#container {
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+.timer_table {
+    width: 350px;
+    margin-right: 20px;
+    margin-top: 20px;
+    float: left;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+
+.timer_name_col {
+    width: 350px;
+}
+
+.timer_name_inp {
+    width: 100%;
+    font-size: 18px;
+    padding: 5px;
+    padding-left: 5px;
+    letter-spacing: 2px;
+    box-sizing: border-box;
+    border:none;
+    background-color:lightgray;
+    text-align:center;
+}
+
+.timer_elapsed_col {
+    font-size: 40px;
+    font-family:'Courier New', monospace;
+    font-weight:bold;
+    text-align: center;
+    padding: 5px;
+    padding-left: 5px;
+    letter-spacing: 2px;
+}
+
+.timer_adj_col {
+    box-sizing: border-box;
+    padding-bottom: 10px;
+    padding-left: 73px;
+}
+
+.timer_adj_btn {
+    cursor: pointer;
+}
+
+
+.timer_main_col {
+}
+
+.timer_toggle_btn {
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+    font-size:18px;
+}
+
+.timer_main_btn {
+    width:50%;
+    padding:5px;
+    cursor: pointer;
+
+}
+
+
+
+
+#bottomButtons{
+    margin-top:20px;
+    margin-left:10px;
+}
+
+.bottomButton{
+    padding:20px;
+}

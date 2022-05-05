@@ -131,6 +131,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\TimerToysAPIController.cs" />
+    <Compile Include="Controllers\TimerToysController.cs" />
     <Compile Include="Controllers\CLController.cs" />
     <Compile Include="Controllers\GameOfLifeController.cs" />
     <Compile Include="Controllers\SFD3.cs" />
@@ -146,13 +148,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DWKDB.dbml</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseAccess\TimerToys\TimerToysDB.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TimerToysDB.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\SFDModel.cs" />
+    <Compile Include="Models\Timer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\TimerToys.css" />
     <Content Include="Content\D2D.css" />
     <Content Include="Content\cl.css" />
     <Content Include="Content\Home.css" />
@@ -190,6 +199,7 @@
     <Content Include="Content\SliderPuzzleCustomizations\VeryLikely.jpg" />
     <Content Include="Content\SliderPuzzleCustomizations\VeryLikely.js" />
     <Content Include="Content\SudokuSolver.css" />
+    <Content Include="Scripts\TimerToys.js" />
     <Content Include="Scripts\cl.js" />
     <Content Include="Scripts\Home.js" />
     <Content Include="Scripts\GameOfLife.js" />
@@ -228,6 +238,14 @@
     <None Include="DatabaseAccess\ChainLetter\DWKDB.dbml.layout">
       <DependentUpon>DWKDB.dbml</DependentUpon>
     </None>
+    <Content Include="DatabaseAccess\TimerToys\TimerToysDB.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>TimerToysDB.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="DatabaseAccess\TimerToys\TimerToysDB.dbml.layout">
+      <DependentUpon>TimerToysDB.dbml</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <Content Include="Views\D2D\Index.cshtml" />
     <Content Include="Views\SudokuSolver\Index.cshtml" />
@@ -241,6 +259,7 @@
     <None Include="Properties\PublishProfiles\davesgames - Web Deploy3.pubxml" />
     <Content Include="Views\SFD2\Index.cshtml" />
     <Content Include="Views\SFD3\Index.cshtml" />
+    <Content Include="Views\TimerToys\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
