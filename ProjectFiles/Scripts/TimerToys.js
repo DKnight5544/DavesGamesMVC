@@ -5,16 +5,17 @@ const global = {};
 
 function begin() {
 
+    if (PageKey === "Home") return false
+
     global.banner = document.getElementById("banner");
     global.container = document.getElementById("container");
     global.bottomButtons = document.getElementById("bottomButtons");
+    global.thisPageLink = document.getElementById("thisPageLink");
+
+    global.thisPageLink.href = location.href;
+    global.thisPageLink.innerHTML = "Page Link - Right Click To Copy.";
 
     buildPage();
-
-    if (PageKey === "Home") {
-        global.banner.value = "Timer Toys"
-        return false
-    }
 
     getTimers();
 
@@ -285,5 +286,6 @@ function timerName_onblur(sender) {
 }
 
 function timerName_onfocus(sender) {
+    sender.select();
     global.froze = true;
 }

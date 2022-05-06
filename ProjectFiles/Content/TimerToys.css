@@ -11,8 +11,8 @@
     font-size: 30px;
     background-color: black;
     color: white;
-    padding: 3px;
-    padding-left: 5px;
+    padding: 5px;
+    padding-left: 10px;
     box-sizing: border-box;
     margin-bottom: 0px;
 }
@@ -25,9 +25,12 @@
 input {
     cursor: pointer;
     text-decoration: none;
-    text-align: left;
+    outline:none;
 }
 
+input:focus {
+    outline: none;
+}
 
 #container {
     width: 100%;
@@ -44,6 +47,7 @@ input {
     float: left;
     padding:0px;
     border:none;
+    border-collapse:collapse;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -57,7 +61,6 @@ input {
     width: 100%;
     font-size: 18px;
     padding: 5px;
-    padding-left: 5px;
     letter-spacing: 2px;
     box-sizing: border-box;
     border:none;
@@ -79,23 +82,24 @@ input {
 
 .timer_adj_col {
     box-sizing: border-box;
+    padding-left:63px;
     padding-bottom: 10px;
-    padding-left: 68px;
     text-align:left;
+    font-size:0px;
 }
+
 
 .timer_adj_button_d {
     cursor: pointer;
-    margin-left: 0px;
-    margin-right: 0px;
-    color: blue;
+    font-size:18px;
+    width:30px;
 }
 
 .timer_adj_button_u {
     cursor: pointer;
-    margin-left: 0px;
-    margin-right: 18px;
-    color: red;
+    font-size: 18px;
+    width: 30px;
+    margin-right: 19px;
 }
 
 .timer_main_col {
@@ -104,8 +108,8 @@ input {
     padding:10px;
 }
 
-.timer_main_btn {
-    width:70px;
+.timer_main_btn{
+    width:80px;
     padding:5px;
     margin-left:5px;
     margin-right:5px;
@@ -114,7 +118,11 @@ input {
 }
 
 
-
+.thisPageLinkDiv {
+    margin-top: 20px;
+    margin-left:15px;
+    margin-bottom: 20px;
+}
 
 #bottomButtons{
     margin-top:20px;
