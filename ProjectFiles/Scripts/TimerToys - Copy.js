@@ -7,7 +7,7 @@ function begin() {
 
     global.banner = document.getElementById("banner");
     global.container = document.getElementById("container");
-    global.bottomButtons = document.getElementById("bottomButtons");
+    global.buttons = document.getElementById("buttons");
 
     buildPage();
 
@@ -28,88 +28,147 @@ function buildPage() {
         updatePageName(this)
         global.banner.froze = false;
     }
+
     global.banner.onfocus = function () {
         global.banner.froze = true;
     }
 
-
-    const template = document.getElementById("timerTemplate");
-
-
     for (let i = 0; i < 50; i++) {
-        let div = document.createElement("div");
-        div.innerHTML = template.innerHTML;
-        let tbl = div.children[0];
-        //tbl.className = "timer_table";
+
+        let btn;
+        let tbl = document.createElement("tbl");
+
+        tbl.id = `tbl${i}`;
+        tbl.style.display = "none";
+
+
+        // Name Input
+        let row = document.createElement("tr");
+        let col = document.createElement("td");
+
+        let inp = document.createElement("input");
+        tbl.inputObj = inp;
+
+
+        col.append(inp);
+        row.append(col);
+
+        tbl.append(row);
+
+        tbl.className = "timer_table";
+
+        col.className = "timer_name_col";
+
+        inp.type = "text";
+        inp.className = "timer_name_inp";
+
+        inp.onblur = function () {
+            tbl.inputObj.froze = false;
+            updateTimerName(this);
+        }
+
+        tbl.inputObj.onfocus = function () {
+            tbl.inputObj.froze = true;
+        }
+
+        // Elapsed time
+        row = document.createElement("tr");
+        col = document.createElement("td");
+        row.append(col);
+
+        tbl.elapsedObj = col;
+        tbl.append(row);
+
+        col.className = "timer_elapsed_col";
+
+        // Adjust buttons
+        row = document.createElement("tr");
+        col = document.createElement("td");
+        row.append(col);
+
+        tbl.btnInfoObj = col;
+        tbl.append(row);
+
+        col.className = "timer_adj_col";
+        col.append(getAdjustButton(-3600));
+        col.append(getAdjustButton(3600));
+        col.append(getAdjustButton(-60));
+        col.append(getAdjustButton(60));
+        col.append(getAdjustButton(-1));
+        col.append(getAdjustButton(1));
+
+        // main buttons row
+        row = document.createElement("tr");
+        col = document.createElement("td");
+        col.className = "timer_main_col";
+        row.append(col);
+        tbl.append(row);
+
+        // toggle button
+        btn = document.createElement("button");
+        btn.className = "timer_toggle_btn";
+        btn.onclick = function () {
+            toggleTimer(this);
+        }
+        tbl.toggleButton = btn;
+        col.append(btn);
+
+        //reset button
+        btn = document.createElement("button");
+        btn.className = "timer_main_btn";
+        btn.innerHTML = "RESET";
+        btn.onclick = function () {
+            resetTimer(this);
+        }
+        tbl.resetButton = btn;
+        col.append(btn);
+
+        //delete button
+        btn = document.createElement("button");
+        btn.className = "timer_main_btn";
+        btn.innerHTML = "DELETE";
+        btn.onclick = function () {
+            deleteTimer(this);
+        }
+        tbl.deleteButton = btn;
+        col.append(btn);
+
+        // add table 
         global.container.append(tbl);
+
     }
 
 }
 
 function refresh() {
 
-    if (!global.banner.froze) global.banner.value = global.timers[0].TimerName;
+    if(!global.banner.froze) global.banner.value = global.timers[0].TimerName;
     global.banner.orgValue = global.timers[0].TimerName;
     global.readOnlyKey = global.timers[1].TimerKey;
 
-    global.timers[0].IsReadOnly
-    if (global.timers[0].IsReadOnly) {
-        global.bottomButtons.children[1].style.display = "none";
-        global.bottomButtons.children[2].style.display = "none";
-    }
-    else {
-        global.bottomButtons.children[1].style.display = "inline-block";
-        global.bottomButtons.children[2].style.display = "inline-block";
-    }
-    
 
     for (let i = 0; i < 50; i++) {
 
-        let data = global.timers[i + 2];
-        let timer = global.container.children[i];
+        let timer = global.timers[i + 2];
 
-        if (data) {
+        let tbl = document.getElementById(`tbl${i}`);
 
-            let timeString = stringifyElapsedTime(data.ElapsedTime);
+        if (timer) {
 
-            timer.style.display = "block";
-
-            //      tbody      row          col         inp/btn
-            if (!global.froze) {
-                timer.children[0].children[0].children[0].children[0].value = data.TimerName;
-                timer.children[0].children[0].children[0].children[0].timerKey = data.TimerKey;
-            }
-
-            timer.children[0].children[1].children[0].innerHTML = timeString;
-            timer.children[0].children[1].children[0].style.color = data.IsRunning ? "red" : "black";
-
-            if (data.IsReadOnly) {
-                // hide rows 2 and 3 (controls)
-                timer.children[0].children[2].children[0].style.display = (data.IsReadOnly) ? "none" : "block";
-                timer.children[0].children[3].children[0].style.display = (data.IsReadOnly) ? "none" : "block";
-            }
-            else {
-                //row 2
-                timer.children[0].children[2].children[0].children[0].timerKey = data.TimerKey;
-                timer.children[0].children[2].children[0].children[1].timerKey = data.TimerKey;
-                timer.children[0].children[2].children[0].children[2].timerKey = data.TimerKey;
-                timer.children[0].children[2].children[0].children[3].timerKey = data.TimerKey;
-                timer.children[0].children[2].children[0].children[4].timerKey = data.TimerKey;
-                timer.children[0].children[2].children[0].children[5].timerKey = data.TimerKey;
-                //row 3
-                timer.children[0].children[3].children[0].children[0].innerHTML = data.IsRunning ? "OFF" : "ON";
-                timer.children[0].children[3].children[0].children[0].timerKey = data.TimerKey;
-                timer.children[0].children[3].children[0].children[1].timerKey = data.TimerKey;
-                timer.children[0].children[3].children[0].children[2].timerKey = data.TimerKey;
-            }
-
-
-
+            tbl.style.display = "block";
+            tbl.inputObj.timerKey = timer.TimerKey;
+            if(!tbl.inputObj.froze) tbl.inputObj.value = timer.TimerName;
+            tbl.inputObj.orgValue = timer.TimerName;
+            tbl.elapsedObj.innerHTML = stringifyElapsedTime(timer.ElapsedTime);
+            tbl.btnInfoObj.timerKey = timer.TimerKey;
+            tbl.toggleButton.timerKey = timer.TimerKey;
+            tbl.toggleButton.innerHTML = timer.IsRunning ? "OFF" : "ON";
+            tbl.resetButton.timerKey = timer.TimerKey;
+            tbl.deleteButton.timerKey = timer.TimerKey;
         }
         else {
-            timer.style.display = "none";
+            tbl.style.display = "none";
         }
-
 
     }
 
@@ -152,11 +211,6 @@ function addNewTimer() {
 
 }
 
-function gotoReadOnly() {
-    let url = `/TimerToys/${global.timers[1].TimerKey}`;
-    location.href = url;
-}
-
 function updatePageName() {
 
     if (!global.timers) return false;
@@ -172,20 +226,23 @@ function updatePageName() {
 
 function updateTimerName(sender) {
 
+    if (sender.orgValue === sender.value) return false;
+
     let endpoint = "/TimerToysAPI/UpdateTimerName|{{PageKey}}|{{TimerKey}}|{{TimerName}}";
     endpoint = endpoint.replace("{{PageKey}}", PageKey);
     endpoint = endpoint.replace("{{TimerKey}}", sender.timerKey);
     endpoint = endpoint.replace("{{TimerName}}", sender.value);
 
     fetch(endpoint);
+
 }
 
 function adjustTime(sender, offset) {
 
     let endpoint = "/TimerToysAPI/AdustTimer|{{PageKey}}|{{TimerKey}}|{{Offset}}";
     endpoint = endpoint.replace("{{PageKey}}", PageKey);
-    endpoint = endpoint.replace("{{TimerKey}}", sender.timerKey);
-    endpoint = endpoint.replace("{{Offset}}", offset);
+    endpoint = endpoint.replace("{{TimerKey}}", sender.parentElement.timerKey);
+    endpoint = endpoint.replace("{{Offset}}", sender.offset);
 
     fetch(endpoint)
         .then(response => response.json())
@@ -237,7 +294,7 @@ function deleteTimer(sender) {
         });
 }
 
-function stringifyElapsedTime(seconds) {
+function stringifyElapsedTime(seconds){
 
     let hours = Math.floor(seconds / 3600);
 
@@ -277,13 +334,4 @@ function getAdjustButton(offset) {
     }
 
     return btn;
-}
-
-function timerName_onblur(sender) {
-    global.froze = false;
-    updateTimerName(sender)
-}
-
-function timerName_onfocus(sender) {
-    global.froze = true;
 }

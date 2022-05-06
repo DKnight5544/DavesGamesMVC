@@ -199,6 +199,7 @@
     <Content Include="Content\SliderPuzzleCustomizations\VeryLikely.jpg" />
     <Content Include="Content\SliderPuzzleCustomizations\VeryLikely.js" />
     <Content Include="Content\SudokuSolver.css" />
+    <Content Include="Scripts\TimerToys - Copy.js" />
     <Content Include="Scripts\TimerToys.js" />
     <Content Include="Scripts\cl.js" />
     <Content Include="Scripts\Home.js" />

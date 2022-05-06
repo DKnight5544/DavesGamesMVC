@@ -5,7 +5,7 @@
 </script>
 
 
-<input type="text" id="banner"/>
+<input type="text" id="banner" />
 
 <div id="container"></div>
 
@@ -15,4 +15,38 @@
     <button onclick="getNewPage();" class="bottomButton">New Page</button>
     <button onclick="addNewTimer();" class="bottomButton">Add Timer</button>
     <button onclick="gotoReadOnly();" class="bottomButton">Read Only</button>
+</div>
+
+
+<div id="timerTemplate" style="display:none;">
+    <table class="timer_table" style="display:none;">
+        <tr>
+            <td class="timer_name_col">
+                <input type="text"
+                       class="timer_name_inp"
+                       onfocus="timerName_onfocus(this)"
+                       onblur="timerName_onblur(this)" />
+            </td>
+        </tr>
+        <tr>
+            <td class="timer_elapsed_col"></td>
+        </tr>
+        <tr>
+            <td class="timer_adj_col">
+                <button class="timer_adj_button_d" onclick="adjustTime(this, -3600);">-</button>
+                <button class="timer_adj_button_u" onclick="adjustTime(this, 3600);">+</button>
+                <button class="timer_adj_button_d" onclick="adjustTime(this, -60);">-</button>
+                <button class="timer_adj_button_u" onclick="adjustTime(this, 60);">+</button>
+                <button class="timer_adj_button_d" onclick="adjustTime(this, -1);">-</button>
+                <button class="timer_adj_button_u" onclick="adjustTime(this, 1);">+</button>
+            </td>
+        </tr>
+        <tr>
+            <td class="timer_main_col">
+                <button class="timer_main_btn" onclick="toggleTimer(this)">{{on_off}}</button>
+                <button class="timer_main_btn" onclick="resetTimer(this)">RESET</button>
+                <button class="timer_main_btn" onclick="deleteTimer(this)">DELETE</button>
+            </td>
+        </tr>
+    </table>
 </div>

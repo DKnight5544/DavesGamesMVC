@@ -42,13 +42,15 @@ input {
     margin-right: 20px;
     margin-top: 20px;
     float: left;
+    padding:0px;
+    border:none;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
 }
 
 
 .timer_name_col {
     width: 350px;
+    padding:0px;
 }
 
 .timer_name_inp {
@@ -61,6 +63,7 @@ input {
     border:none;
     background-color:lightgray;
     text-align:center;
+    margin:0px;
 }
 
 .timer_elapsed_col {
@@ -71,32 +74,41 @@ input {
     padding: 5px;
     padding-left: 5px;
     letter-spacing: 2px;
+    color:blue;
 }
 
 .timer_adj_col {
     box-sizing: border-box;
     padding-bottom: 10px;
-    padding-left: 73px;
+    padding-left: 68px;
+    text-align:left;
 }
 
-.timer_adj_btn {
+.timer_adj_button_d {
     cursor: pointer;
+    margin-left: 0px;
+    margin-right: 0px;
+    color: blue;
 }
 
+.timer_adj_button_u {
+    cursor: pointer;
+    margin-left: 0px;
+    margin-right: 18px;
+    color: red;
+}
 
 .timer_main_col {
-}
-
-.timer_toggle_btn {
-    width: 100%;
-    padding: 10px;
-    cursor: pointer;
-    font-size:18px;
+    text-align: center;
+    box-sizing: border-box;
+    padding:10px;
 }
 
 .timer_main_btn {
-    width:50%;
+    width:70px;
     padding:5px;
+    margin-left:5px;
+    margin-right:5px;
     cursor: pointer;
 
 }
