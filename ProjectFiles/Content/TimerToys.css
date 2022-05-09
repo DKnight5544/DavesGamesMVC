@@ -3,9 +3,10 @@
     padding: 0;
     font-family: monospace;
     margin-bottom: 20px;
+    text-align:center;
 }
 
-#banner {
+.banner {
     width: 100%;
     font-family: 'Nunito', sans-serif;
     font-size: 30px;
@@ -15,6 +16,7 @@
     padding-left: 10px;
     box-sizing: border-box;
     margin-bottom: 0px;
+    text-align:center;
 }
 
     #banner:focus {
@@ -32,23 +34,36 @@ input:focus {
     outline: none;
 }
 
-#container {
+
+.menu_btn {
+    padding: 5px;
+    width:100px;
+    margin-top:10px;
+    margin-left:10px;
+    margin-right:0px;
+}
+
+
+.container {
     width: 100%;
     box-sizing: border-box;
     padding-left: 10px;
     padding-right: 10px;
+    text-align:center;
+    margin-bottom:30px;
 }
-
 
 .timer_table {
     width: 350px;
-    margin-right: 20px;
     margin-top: 20px;
-    float: left;
+    margin-left:10px;
+    margin-right:10px;
+  /*  float: left;*/
     padding:0px;
     border:none;
     border-collapse:collapse;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display:none;
 }
 
 
@@ -70,13 +85,11 @@ input:focus {
 }
 
 .timer_elapsed_col {
-    font-size: 40px;
-    font-family:'Courier New', monospace;
-    font-weight:bold;
+    font-size: 50px;
     text-align: center;
     padding: 5px;
     padding-left: 5px;
-    letter-spacing: 2px;
+    /*letter-spacing: 2px;*/
     color:blue;
 }
 
@@ -99,7 +112,7 @@ input:focus {
     cursor: pointer;
     font-size: 18px;
     width: 30px;
-    margin-right: 19px;
+    margin-right: 22px;
 }
 
 .timer_main_col {
@@ -118,17 +131,65 @@ input:focus {
 }
 
 
-.thisPageLinkDiv {
+.timer_button {
+    width: 350px;
+    font-size: 18px;
     margin-top: 20px;
-    margin-left:15px;
-    margin-bottom: 20px;
-}
-
-#bottomButtons{
-    margin-top:20px;
     margin-left:10px;
+    margin-right:10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-sizing: border-box;
+    padding-top:5px;
+    cursor:pointer;
 }
 
-.bottomButton{
-    padding:20px;
+.timer_button_time {
+    font-size: 40px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+.link_button {
+    width: 350px;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-sizing: border-box;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.link_edit_form {
+    width: 350px;
+    margin-top: 20px;
+    margin-right:20px;
+    text-align: left;
+    background-color: lightgrey;
+    box-sizing: border-box;
+    padding: 10px;
+    padding-right:20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.link_label {
+    margin-left: 6px;
+    font-size:18px;
+}
+
+.link_name_inp_1 {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 18px;
+    box-sizing: border-box;
+    padding: 5px
+}
+.link_name_inp_2 {
+    width: 100%;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    padding: 5px
 }

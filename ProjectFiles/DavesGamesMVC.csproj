@@ -133,7 +133,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\TimerToysAPIController.cs" />
     <Compile Include="Controllers\TimerToysController.cs" />
-    <Compile Include="Controllers\CLController.cs" />
     <Compile Include="Controllers\GameOfLifeController.cs" />
     <Compile Include="Controllers\SFD3.cs" />
     <Compile Include="Controllers\SFD2.cs" />
@@ -143,11 +142,6 @@
     <Compile Include="Controllers\SudokuSolver.cs" />
     <Compile Include="Controllers\D2DController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="DatabaseAccess\ChainLetter\DWKDB.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DWKDB.dbml</DependentUpon>
-    </Compile>
     <Compile Include="DatabaseAccess\TimerToys\TimerToysDB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -157,7 +151,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\SFDModel.cs" />
-    <Compile Include="Models\Timer.cs" />
+    <Compile Include="Models\TimersPayload.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -199,9 +193,7 @@
     <Content Include="Content\SliderPuzzleCustomizations\VeryLikely.jpg" />
     <Content Include="Content\SliderPuzzleCustomizations\VeryLikely.js" />
     <Content Include="Content\SudokuSolver.css" />
-    <Content Include="Scripts\TimerToys - Copy.js" />
     <Content Include="Scripts\TimerToys.js" />
-    <Content Include="Scripts\cl.js" />
     <Content Include="Scripts\Home.js" />
     <Content Include="Scripts\GameOfLife.js" />
     <Content Include="Scripts\Move.js" />
@@ -231,14 +223,6 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DatabaseAccess\ChainLetter\DWKDB.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>DWKDB.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
-    <None Include="DatabaseAccess\ChainLetter\DWKDB.dbml.layout">
-      <DependentUpon>DWKDB.dbml</DependentUpon>
-    </None>
     <Content Include="DatabaseAccess\TimerToys\TimerToysDB.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>TimerToysDB.designer.cs</LastGenOutput>
@@ -254,7 +238,6 @@
     <Content Include="Views\SliderPuzzle\Index.cshtml" />
     <Content Include="Views\Shared\SFD.cshtml" />
     <None Include="Properties\PublishProfiles\davesgames - Web Deploy.pubxml" />
-    <Content Include="Views\CL\Index.cshtml" />
     <None Include="Properties\PublishProfiles\davesgames - Web Deploy1.pubxml" />
     <None Include="Properties\PublishProfiles\davesgames - Web Deploy2.pubxml" />
     <None Include="Properties\PublishProfiles\davesgames - Web Deploy3.pubxml" />

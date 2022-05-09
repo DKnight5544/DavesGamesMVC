@@ -1,4 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="TimerToysDB">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.875" name="TimerToysDB">
   <DataContextMoniker Name="/TimerToysDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="1621f611-0bb7-44e3-bc6a-aebbef00add7" absoluteBounds="1.875, 2.125, 2, 1.3862939453125">
+      <DataClassMoniker Name="/TimerToysDBDataContext/LinkModel" />
+      <nestedChildShapes>
+        <elementListCompartment Id="07ddf546-0146-49a8-94c8-18c1277f2645" absoluteBounds="1.8900000000000001, 2.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="363d4bf4-a7de-4a1d-ac40-e33bae309a4b" absoluteBounds="2.75, 4.375, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/TimerToysDBDataContext/PageModel" />
+      <nestedChildShapes>
+        <elementListCompartment Id="00b44bdc-05f3-4d4d-9101-e321eb4abf52" absoluteBounds="2.765, 4.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ef5e5949-b887-4f18-86f8-b275f43b5606" absoluteBounds="2.125, 7, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/TimerToysDBDataContext/TimerModel" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c4814e85-eee7-404b-96cb-0acd085c46cb" absoluteBounds="2.14, 7.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
 </ordesignerObjectsDiagram>

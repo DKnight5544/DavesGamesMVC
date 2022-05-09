@@ -22,25 +22,36 @@ namespace DavesGamesMVC.Controllers
                 string[] arr = id.Split("|".ToCharArray());
                 string action = arr[0];
 
-                if (action == "GetTimers")
+                if (action == "GetAll")
                 {
                     string pageKey = arr[1];
-                    var results = c.SelectAllByPage(pageKey)
-                        .OrderBy(t => t.SortIndex)
-                        ;
+
+                    TimersPayload results = new Models.TimersPayload();
+
+                    results.Page = c.SelectPage(pageKey).SingleOrDefault();
+                    results.Timers = c.SelectTimers(pageKey).OrderBy(t => t.TimerKey).ToList();
+                    results.Links = c.SelectLinks(pageKey).OrderBy(l => l.LinkKey).ToList();
+
                     return jss.Serialize(results);
                 }
 
                 else if (action == "GetNewPage")
                 {
-                    var results = c.InsertNewPage().SingleOrDefault();
+                    var results = c.InsertPage().SingleOrDefault();
                     return jss.Serialize(results.PageKey);
                 }
 
                 else if (action == "AddNewTimer")
                 {
                     string pageKey = arr[1];
-                    var results = c.InsertNewTimer(pageKey);
+                    var results = c.InsertTimer(pageKey);
+                    return jss.Serialize("OK");
+                }
+
+                else if (action == "AddNewLink")
+                {
+                    string pageKey = arr[1];
+                    var results = c.InsertLink(pageKey);
                     return jss.Serialize("OK");
                 }
 
@@ -55,9 +66,9 @@ namespace DavesGamesMVC.Controllers
                 else if (action == "UpdateTimerName")
                 {
                     string pageKey = arr[1];
-                    string pageName = arr[2];
+                    string timerKey = arr[2];
                     string timerName = arr[3];
-                    var results = c.UpdateTimerName(pageKey, pageName, timerName);
+                    var results = c.UpdateTimerName(pageKey, timerKey, timerName);
                     return jss.Serialize("OK");
                 }
 
@@ -90,9 +101,37 @@ namespace DavesGamesMVC.Controllers
                 {
                     string pageKey = arr[1];
                     string timerKey = arr[2];
-                    var results = c.DeleteTimer(pageKey, timerKey);
+                    var results = c.DeleteTimer(pageKey, int.Parse(timerKey));
                     return jss.Serialize("OK");
                 }
+
+                else if (action == "UpdateLinkName")
+                {
+                    string pageKey = arr[1];
+                    string linkKey = arr[2];
+                    string linkName = arr[3];
+                    var results = c.UpdateLinkName(pageKey, linkKey, linkName);
+                    return jss.Serialize("OK");
+                }
+
+                else if (action == "UpdateLinkUrl")
+                {
+                    string pageKey = arr[1];
+                    string linkKey = arr[2];
+                    string linkUrl = arr[3];
+                    var results = c.UpdateLinkUrl(pageKey, linkKey, linkUrl);
+                    return jss.Serialize("OK");
+                }
+
+                else if (action == "DeleteLink")
+                {
+                    string pageKey = arr[1];
+                    string linkKey = arr[2];
+                    var results = c.DeleteTimer(pageKey, int.Parse(linkKey));
+                    return jss.Serialize("OK");
+                }
+
+
 
                 else return jss.Serialize("Action Not Found"); ;
             }
