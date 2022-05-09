@@ -17,11 +17,6 @@ function begin() {
     global.TimerTemplate = document.getElementById("TimerTemplate");
     global.LinkContainer = document.getElementById("LinkContainer");
     global.TimerContainer = document.getElementById("TimerContainer");
-    global.Form1 = document.getElementById("Form1");
-
-
-    global.API = new XMLHttpRequest();
-    global.API.open("POST", "/TimerToysAPI/");
 
     global.IsEditMode = false;
 
@@ -186,19 +181,17 @@ function refreshTimerEdit(data, timer) {
 
 function getAll() {
 
-    let form1 = global.Form1;
-    form1.Action.value = "GetAll"
-    form1.PageKey.value = global.PageKey;
-    form1.TimerKey.value = "Null";
-    form1.MyValue.value = "Null";
+    let endpoint = "/TimerToysAPI/GetAll|{{PageKey}}";
+    endpoint = endpoint.replace("{{PageKey}}", global.PageKey);
 
-    global.API.onload = function (event) {
-        alert("The server says: " + event.target.response);
-    };
-
-    var formData = new FormData(form1);
-
-    global.API.send(formData);
+    fetch(endpoint)
+        .then(response => response.json())
+        .then(results => {
+            global.Page = results.Page
+            global.Timers = results.Timers;
+            global.Links = results.Links;
+            refresh();
+        });
 
 }
 
