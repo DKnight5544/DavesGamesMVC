@@ -86,13 +86,6 @@ namespace DavesGamesMVC.DatabaseAccess.TimerToys
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="tt.AdjustTimer")]
-		public int AdjustTimer([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PageKey", DbType="Char(36)")] string pageKey, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TimerKey", DbType="Char(36)")] string timerKey, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Offset", DbType="Int")] System.Nullable<int> offset)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pageKey, timerKey, offset);
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="tt.DeleteLink")]
 		public int DeleteLink([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PageKey", DbType="Char(36)")] string pageKey, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LinkKey", DbType="Int")] System.Nullable<int> linkKey)
 		{
@@ -128,13 +121,6 @@ namespace DavesGamesMVC.DatabaseAccess.TimerToys
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="tt.ResetTimer")]
-		public int ResetTimer([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PageKey", DbType="Char(36)")] string pageKey, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TimerKey", DbType="Char(36)")] string timerKey)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pageKey, timerKey);
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="tt.SelectLinks")]
 		public ISingleResult<LinkModel> SelectLinks([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PageKey", DbType="Char(36)")] string pageKey)
 		{
@@ -156,20 +142,6 @@ namespace DavesGamesMVC.DatabaseAccess.TimerToys
 			return ((ISingleResult<TimerModel>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="tt.ToggleTimer")]
-		public int ToggleTimer([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PageKey", DbType="Char(36)")] string pageKey, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TimerKey", DbType="Char(36)")] string timerKey)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pageKey, timerKey);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="tt.UpdateLinkName")]
-		public int UpdateLinkName([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PageKey", DbType="Char(36)")] string pageKey, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LinkKey", DbType="Char(36)")] string linkKey, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LinkName", DbType="NVarChar(150)")] string linkName)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pageKey, linkKey, linkName);
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="tt.UpdatePageName")]
 		public int UpdatePageName([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PageKey", DbType="Char(36)")] string pageKey, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PageName", DbType="NVarChar(150)")] string pageName)
 		{
@@ -177,17 +149,45 @@ namespace DavesGamesMVC.DatabaseAccess.TimerToys
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="tt.UpdateTimerName")]
-		public int UpdateTimerName([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PageKey", DbType="Char(36)")] string pageKey, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TimerKey", DbType="Char(36)")] string timerKey, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TimerName", DbType="NVarChar(150)")] string timerName)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="tt.AdjustTimer")]
+		public int AdjustTimer([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PageKey", DbType="Char(36)")] string pageKey, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TimerKey", DbType="Int")] System.Nullable<int> timerKey, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Offset", DbType="Int")] System.Nullable<int> offset)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pageKey, timerKey, timerName);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pageKey, timerKey, offset);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="tt.ResetTimer")]
+		public int ResetTimer([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PageKey", DbType="Char(36)")] string pageKey, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TimerKey", DbType="Int")] System.Nullable<int> timerKey)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pageKey, timerKey);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="tt.ToggleTimer")]
+		public int ToggleTimer([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PageKey", DbType="Char(36)")] string pageKey, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TimerKey", DbType="Int")] System.Nullable<int> timerKey)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pageKey, timerKey);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="tt.UpdateLinkName")]
+		public int UpdateLinkName([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PageKey", DbType="Char(36)")] string pageKey, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LinkKey", DbType="Int")] System.Nullable<int> linkKey, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LinkName", DbType="NVarChar(150)")] string linkName)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pageKey, linkKey, linkName);
 			return ((int)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="tt.UpdateLinkUrl")]
-		public int UpdateLinkUrl([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PageKey", DbType="Char(36)")] string pageKey, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LinkKey", DbType="Char(36)")] string linkKey, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LinkUrl", DbType="NVarChar(MAX)")] string linkUrl)
+		public int UpdateLinkUrl([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PageKey", DbType="Char(36)")] string pageKey, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LinkKey", DbType="Int")] System.Nullable<int> linkKey, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LinkUrl", DbType="NVarChar(MAX)")] string linkUrl)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pageKey, linkKey, linkUrl);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="tt.UpdateTimerName")]
+		public int UpdateTimerName([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PageKey", DbType="Char(36)")] string pageKey, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TimerKey", DbType="Int")] System.Nullable<int> timerKey, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TimerName", DbType="NVarChar(150)")] string timerName)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pageKey, timerKey, timerName);
 			return ((int)(result.ReturnValue));
 		}
 	}

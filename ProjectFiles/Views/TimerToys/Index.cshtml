@@ -5,111 +5,92 @@
     global.PageKey = "@ViewBag.PageKey";
 </script>
 
-@{
+<input type="text" id="Banner" class="banner" />
 
-    if (ViewBag.PageKey == "Home")
-    {
-        <div class="banner">Timer Toys</div>
+<div id="LinkContainer" class="container"></div>
+<div id="TimerContainer" class="container"></div>
 
-        <div style="clear:both;">
-            <button onclick="getNewPage();" class="bottomButton">New Page</button>
+<button id="AddTimerButton" onclick="addNewTimer();" class="menu_btn">Add Timer</button>
+<button id="AddLinkButton" onclick="addNewLink();" class="menu_btn">Add Link</button>
+<button id="ReadOnlyButton" onclick="gotoReadOnly();" class="menu_btn">Read Only</button>
+<button id="EditModeButton" onclick="toggleEditMode();" class="menu_btn">Edit Mode</button>
+<button id="NewPageButton" onclick="getNewPage();" class="menu_btn">New Page</button>
+
+
+
+<div id="LinkTemplate" style="display:none;">
+    <div style="display:none;">
+        <div class="link_button_container">
+            <button class="link_button" onclick="gotoLink(this)">
+            </button>
         </div>
-    }
-    else
-    {
+        <div class="link_edit_form">
+            <span class="link_label">Link Text</span><br />
 
-        <input type="text" id="Banner" class="banner" />
+            <input class="link_name_inp_1"
+                   type="text"
+                   onfocus="linkName_onfocus(this);"
+                   onblur="linkName_onblur(this);" /><br />
 
-        <div id="LinkContainer" class="container"></div>
-        <div id="TimerContainer" class="container"></div>
+            <span class="link_label">URL</span><br />
 
-        <button id="AddTimerButton" onclick="addNewTimer();" class="menu_btn">Add Timer</button>
-        <button id="AddLinkButton" onclick="addNewLink();" class="menu_btn">Add Link</button>
-        <button id="ReadOnlyButton" onclick="gotoReadOnly();" class="menu_btn">Read Only</button>
-        <button id="EditModeButton" onclick="toggleEditMode();" class="menu_btn">Edit Mode</button>
-        <button id="NewPageButton" onclick="getNewPage();" class="menu_btn">New Page</button>
+            <input class="link_name_inp_2"
+                   type="text"
+                   onfocus="linkUrl_onfocus(this);"
+                   onblur="linkUrl_onblur(this);" /><br />
 
-
-
-        <div id="LinkTemplate" style="display:none;">
-            <div style="display:none;">
-                <div class="link_button_container">
-                    <button class="link_button" onclick="gotoLink(this)">
-                    </button>
-                </div>
-                <div class="link_edit_form">
-                    <span class="link_label">Link Text</span><br />
-
-                    <input class="link_name_inp_1" 
-                           type="text"
-                           onfocus="linkName_onfocus(this);"
-                           onblur="linkName_onblur(this);"
-                           /><br />
-
-                    <span class="link_label">URL</span><br />
-
-                    <input class="link_name_inp_2" 
-                           type="text" 
-                           onfocus="linkUrl_onfocus(this);"
-                           onblur="linkUrl_onblur(this);"
-                           /><br />
-
-                </div>
-            </div>
         </div>
+    </div>
+</div>
 
 
-        <div id="TimerTemplate"  style="display:none;">
-            <div style="display:none;">
-                <div>
-                    <button class="timer_button" onclick="toggleTimer(this)">
-                        <div class="timer_button_name"></div>
-                        <div class="timer_button_time"></div>
-                    </button>
-                </div>
-                <div>
-                    <table class="timer_table">
-                        <tr>
-                            <td class="timer_name_col">
-                                <input type="text"
-                                       class="timer_name_inp"
-                                       onfocus="timerName_onfocus(this)"
-                                       onblur="timerName_onblur(this)" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="timer_elapsed_col"></td>
-                        </tr>
-                        <tr>
-                            <td class="timer_adj_col">
-                                <button class="timer_adj_button_d" onclick="adjustTime(this, -3600);">-</button>
-                                <button class="timer_adj_button_u" onclick="adjustTime(this, 3600);">+</button>
-                                <button class="timer_adj_button_d" onclick="adjustTime(this, -60);">-</button>
-                                <button class="timer_adj_button_u" onclick="adjustTime(this, 60);">+</button>
-                                <button class="timer_adj_button_d" onclick="adjustTime(this, -1);">-</button>
-                                <button class="timer_adj_button_u" onclick="adjustTime(this, 1);">+</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="timer_main_col">
-                                <button class="timer_main_btn" onclick="toggleTimer(this)">{{on_off}}</button>
-                                <button class="timer_main_btn" onclick="resetTimer(this)">RESET</button>
-                                <button class="timer_main_btn" onclick="deleteTimer(this)">DELETE</button>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
+<div id="TimerTemplate" style="display:none;">
+    <div style="display:none;">
+        <div>
+            <button class="timer_button" onclick="toggleTimer(this)">
+                <div class="timer_button_name"></div>
+                <div class="timer_button_time"></div>
+            </button>
         </div>
+        <div>
+            <table class="timer_table">
+                <tr>
+                    <td class="timer_name_col">
+                        <input type="text"
+                               class="timer_name_inp"
+                               onfocus="timerName_onfocus(this)"
+                               onblur="timerName_onblur(this)" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="timer_elapsed_col"></td>
+                </tr>
+                <tr>
+                    <td class="timer_adj_col">
+                        <button class="timer_adj_button_d" onclick="adjustTime(this, -3600);">-</button>
+                        <button class="timer_adj_button_u" onclick="adjustTime(this, 3600);">+</button>
+                        <button class="timer_adj_button_d" onclick="adjustTime(this, -60);">-</button>
+                        <button class="timer_adj_button_u" onclick="adjustTime(this, 60);">+</button>
+                        <button class="timer_adj_button_d" onclick="adjustTime(this, -1);">-</button>
+                        <button class="timer_adj_button_u" onclick="adjustTime(this, 1);">+</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="timer_main_col">
+                        <button class="timer_main_btn" onclick="toggleTimer(this)">{{on_off}}</button>
+                        <button class="timer_main_btn" onclick="resetTimer(this)">RESET</button>
+                        <button class="timer_main_btn" onclick="deleteTimer(this)">DELETE</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
 
-        <form id="Form1">
-            <input id="Action" name="Action"><br>
-            <input id="PageKey" name="PageKey"><br>
-            <input id="TimerKey" name="TimerKey"><br>
-            <input id="MyValue" name="Value"><br>
-        </form> 
-
-
-    }
-
-}
+<form id="Form1" style="display:none;">
+    <input id="Action" name="Action">
+    <input id="PageKey" name="PageKey">
+    <input id="ObjectKey" name="ObjectKey">
+    <input id="StringValue" name="StringValue">
+    <input id="IntegerValue" name="IntegerValue">
+</form>

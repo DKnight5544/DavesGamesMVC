@@ -19,17 +19,13 @@ function begin() {
     global.TimerContainer = document.getElementById("TimerContainer");
     global.Form1 = document.getElementById("Form1");
 
-
-    global.API = new XMLHttpRequest();
-    global.API.open("POST", "/TimerToysAPI/");
-
     global.IsEditMode = false;
 
     buildPage();
 
     getAll();
 
-    //setInterval(getTimers, 1000);
+    setInterval(getAll, 1000);
 
 }
 
@@ -108,11 +104,12 @@ function refreshLink(data, link) {
     linkEdit.style.display = global.IsEditMode ? "inline-block" : "none";
 
     let obj = linkEdit.children[2];
-    if(!obj.Froze) obj.value = data.LinkName;
+    if (!obj.Froze) obj.value = data.LinkName;
+    obj.OrgValue = data.LinkName;
     obj.LinkKey = data.LinkKey;
 
     obj = linkEdit.children[6];
-    if(!obj.Froze) obj.value = data.LinkUrl;
+    if (!obj.Froze) obj.value = data.LinkUrl;
     obj.LinkKey = data.LinkKey;
 
 }
@@ -126,6 +123,7 @@ function refreshTimer(data, timer) {
     let timeColor = data.IsRunning ? "red" : "black";
 
     timerNormal.style.display = global.IsEditMode ? "none" : "inline-block";
+    timerNormal.TimerKey = data.TimerKey;
     timerNormal.children[0].innerHTML = data.TimerName;
     timerNormal.children[1].innerHTML = timeString;
     timerNormal.children[1].style.color = timeColor;
@@ -133,15 +131,19 @@ function refreshTimer(data, timer) {
 
     // table    tbody      row          col       inp/btn
     timerEdit.style.display = global.IsEditMode ? "inline-block" : "none";
-    timerEdit.children[0].children[0].children[0].children[0].TimerKey = data.TimerKey;
+
 
     //timer name input.
     let obj = timerEdit.children[0].children[0].children[0].children[0];
     if (!obj.Froze) obj.value = data.TimerName;
-    obj.TimerKey = data.DataKey;
+    obj.TimerKey = data.TimerKey;
+    obj.OrgValue = data.TimerName;
 
+    //elapsed time
     timerEdit.children[0].children[1].children[0].innerHTML = timeString;
     timerEdit.children[0].children[1].children[0].style.color = timeColor;
+
+    //adjust buttons
     timerEdit.children[0].children[2].children[0].children[0].TimerKey = data.TimerKey;
     timerEdit.children[0].children[2].children[0].children[1].TimerKey = data.TimerKey;
     timerEdit.children[0].children[2].children[0].children[2].TimerKey = data.TimerKey;
@@ -149,6 +151,12 @@ function refreshTimer(data, timer) {
     timerEdit.children[0].children[2].children[0].children[4].TimerKey = data.TimerKey;
     timerEdit.children[0].children[2].children[0].children[5].TimerKey = data.TimerKey;
     timerEdit.children[0].children[3].children[0].children[0].innerHTML = data.IsRunning ? "OFF" : "ON";
+
+    // Timer Buttons
+    // table    tbody       row          col       inp/btn
+    timerEdit.children[0].children[3].children[0].children[0].TimerKey = data.TimerKey;
+    timerEdit.children[0].children[3].children[0].children[1].TimerKey = data.TimerKey;
+    timerEdit.children[0].children[3].children[0].children[2].TimerKey = data.TimerKey;
 
 }
 
@@ -187,92 +195,145 @@ function refreshTimerEdit(data, timer) {
 function getAll() {
 
     let form1 = global.Form1;
-    form1.Action.value = "GetAll"
+    form1.Action.value = "GetAll";
     form1.PageKey.value = global.PageKey;
-    form1.TimerKey.value = "Null";
-    form1.MyValue.value = "Null";
+    form1.ObjectKey.value = "Null";
+    form1.StringValue.value = "Null";
+    form1.IntegerValue.value = "Null";
+    let formData = new FormData(form1);
 
-    global.API.onload = function (event) {
-        alert("The server says: " + event.target.response);
+    let returnFunction = function (event) {
+        let r = JSON.parse(event.target.response);
+        global.Page = r.Page
+        global.Timers = r.Timers;
+        global.Links = r.Links;
+        refresh();
     };
 
-    var formData = new FormData(form1);
+    getApi(returnFunction).send(formData);
 
-    global.API.send(formData);
+}
 
+function getApi(returnFunction) {
+    let api = new XMLHttpRequest();
+    api.onload = returnFunction;
+    api.open("POST", "/TimerToysAPI/");
+    return api;
 }
 
 function getNewPage() {
 
-    fetch('/timertoysapi/GetNewPage')
-        .then(response => response.json())
-        .then(pageKey => {
-            location.href = `/TimerToys/${pageKey}`;
-        });
+    let form1 = global.Form1;
+    form1.Action.value = "GetNewPage";
+    form1.PageKey.value = global.PageKey;
+    form1.ObjectKey.value = "Null";
+    form1.StringValue.value = "Null";
+    form1.IntegerValue.value = "Null";
+    let formData = new FormData(form1);
+
+    let returnFunction = function (event) {
+        let r = JSON.parse(event.target.response);
+        location.href = `/TimerToys/${r}`;
+    };
+
+    getApi(returnFunction).send(formData);
 
 }
 
 function addNewTimer() {
 
-    let endpoint = `/TimerToysAPI/AddNewTimer|${global.PageKey}`;
+    let form1 = global.Form1;
+    form1.Action.value = "AddNewTimer";
+    form1.PageKey.value = global.PageKey;
+    form1.ObjectKey.value = "Null";
+    form1.StringValue.value = "Null";
+    form1.IntegerValue.value = "Null";
+    let formData = new FormData(form1);
 
-    fetch(endpoint)
-        .then(response => response.json())
-        .then(pageKey => {
-            getAll();
-            refresh();
-        });
+    let returnFunction = function (event) {
+        getAll();
+        refresh();
+    };
+
+    getApi(returnFunction).send(formData);
 
 }
 
 function addNewLink() {
 
-    let endpoint = `/TimerToysAPI/AddNewLink|${global.PageKey}`;
+    let form1 = global.Form1;
+    form1.Action.value = "AddNewLink";
+    form1.PageKey.value = global.PageKey;
+    form1.ObjectKey.value = "Null";
+    form1.StringValue.value = "Null";
+    form1.IntegerValue.value = "Null";
+    let formData = new FormData(form1);
 
-    fetch(endpoint)
-        .then(response => response.json())
-        .then(pageKey => {
-            getAll();
-            refresh();
-        });
+    let returnFunction = function (event) {
+        getAll();
+        refresh();
+    };
 
-}
+    getApi(returnFunction).send(formData);
 
-function gotoReadOnly() {
-    let url = `/TimerToys/${global.Page.ReadOnlyKey}`;
-    location.href = url;
-}
-
-function gotoLink(sender) {
-    if (sender.url) {
-        location.href = sender.url;
-    }
 }
 
 function updatePageName() {
 
-    if (!global.Timers) return false;
     if (global.Banner.OrgValue === global.Banner.value) return false;
 
-    let endpoint = "/TimerToysAPI/UpdatePageName|{{PageKey}}|{{PageName}}";
-    endpoint = endpoint.replace("{{PageKey}}", global.PageKey);
-    endpoint = endpoint.replace("{{PageName}}", global.Banner.value);
+    let form1 = blankForm();
+    form1.Action.value = "UpdatePageName";
+    form1.PageKey.value = global.Page.PageKey;
+    form1.StringValue.value = global.Banner.value;
+    let formData = new FormData(form1);
 
-    fetch(endpoint);
+    let returnFunction = function (event) {
+        getAll();
+        refresh();
+    };
 
+    getApi(returnFunction).send(formData);
 }
 
 function updateTimerName(sender) {
 
-    let endpoint = "/TimerToysAPI/UpdateTimerName|{{PageKey}}|{{TimerKey}}|{{TimerName}}";
-    endpoint = endpoint.replace("{{PageKey}}", global.PageKey);
-    endpoint = endpoint.replace("{{TimerKey}}", sender.TimerKey);
-    endpoint = endpoint.replace("{{TimerName}}", sender.value);
+    if (sender.value === sender.OrgValue) return false;
 
-    fetch(endpoint);
+    let form1 = blankForm();
+    form1.Action.value = "UpdateTimerName";
+    form1.PageKey.value = global.Page.PageKey;
+    form1.ObjectKey.value = sender.TimerKey;
+    form1.StringValue.value = sender.value;
+    let formData = new FormData(form1);
+
+    let returnFunction = function (event) {
+        getAll();
+        refresh();
+    };
+
+    getApi(returnFunction).send(formData);
+
 }
 
 function updateLinkName(sender) {
+
+    if (sender.value === sender.OrgValue) return false;
+
+    let form1 = blankForm();
+    form1.Action.value = "UpdateLinkName";
+    form1.PageKey.value = global.Page.PageKey;
+    form1.ObjectKey.value = sender.LinkKey;
+    form1.StringValue.value = sender.value;
+    let formData = new FormData(form1);
+
+    let returnFunction = function (event) {
+        getAll();
+        refresh();
+    };
+
+    getApi(returnFunction).send(formData);
+
 
     let endpoint = "/TimerToysAPI/UpdateLinkName|{{PageKey}}|{{LinkKey}}|{{LinkName}}";
     endpoint = endpoint.replace("{{PageKey}}", global.PageKey);
@@ -284,113 +345,91 @@ function updateLinkName(sender) {
 
 function updateLinkUrl(sender) {
 
-    let endpoint = "/TimerToysAPI/UpdateLinkUrl|{{PageKey}}|{{LinkKey}}|{{LinkUrl}}";
-    endpoint = endpoint.replace("{{PageKey}}", global.PageKey);
-    endpoint = endpoint.replace("{{LinkKey}}", sender.LinkKey);
-    endpoint = endpoint.replace("{{LinkUrl}}", encodeURI(sender.value));
-    //endpoint = encodeURI(endpoint);
-    fetch(endpoint);
-}
+    if (sender.value === sender.OrgValue) return false;
 
+    let form1 = blankForm();
+    form1.Action.value = "UpdateLinkUrl";
+    form1.PageKey.value = global.PageKey;
+    form1.ObjectKey.value = sender.LinkKey;
+    form1.StringValue.value = sender.value;
+    let formData = new FormData(form1);
+
+    let returnFunction = function (event) {
+        getAll();
+        refresh();
+    };
+
+    getApi(returnFunction).send(formData);
+}
 
 function adjustTime(sender, offset) {
 
-    let endpoint = "/TimerToysAPI/AdustTimer|{{PageKey}}|{{TimerKey}}|{{Offset}}";
-    endpoint = endpoint.replace("{{PageKey}}", global.PageKey);
-    endpoint = endpoint.replace("{{TimerKey}}", sender.TimerKey);
-    endpoint = endpoint.replace("{{Offset}}", offset);
+    let form1 = blankForm();
+    form1.Action.value = "AdustTimer";
+    form1.PageKey.value = global.PageKey;
+    form1.ObjectKey.value = sender.TimerKey;
+    form1.IntegerValue.value = offset;
+    let formData = new FormData(form1);
 
-    fetch(endpoint)
-        .then(response => response.json())
-        .then(pageKey => {
-            getAll();
-            refresh();
-        });
+    let returnFunction = function (event) {
+        getAll();
+        refresh();
+    };
+
+    getApi(returnFunction).send(formData);
+
 }
 
 function toggleTimer(sender) {
 
-    let endpoint = "/TimerToysAPI/ToggleTimer|{{PageKey}}|{{TimerKey}}";
-    endpoint = endpoint.replace("{{PageKey}}", global.PageKey);
-    endpoint = endpoint.replace("{{TimerKey}}", sender.TimerKey);
+    let form1 = blankForm();
+    form1.Action.value = "ToggleTimer";
+    form1.PageKey.value = global.PageKey;
+    form1.ObjectKey.value = sender.TimerKey;
+    let formData = new FormData(form1);
 
-    fetch(endpoint)
-        .then(response => response.json())
-        .then(pageKey => {
-            getAll();
-            refresh();
-        });
+    let returnFunction = function (event) {
+        getAll();
+        refresh();
+    };
+
+    getApi(returnFunction).send(formData);
 }
 
 function resetTimer(sender) {
 
-    let endpoint = "/TimerToysAPI/ResetTimer|{{PageKey}}|{{TimerKey}}";
-    endpoint = endpoint.replace("{{PageKey}}", global.PageKey);
-    endpoint = endpoint.replace("{{TimerKey}}", sender.TimerKey);
+    let form1 = blankForm();
+    form1.Action.value = "ResetTimer";
+    form1.PageKey.value = global.PageKey;
+    form1.ObjectKey.value = sender.TimerKey;
+    let formData = new FormData(form1);
 
-    fetch(endpoint)
-        .then(response => response.json())
-        .then(pageKey => {
-            getAll();
-            refresh();
-        });
+    let returnFunction = function (event) {
+        getAll();
+        refresh();
+    };
+
+    getApi(returnFunction).send(formData);
+
 }
 
 function deleteTimer(sender) {
 
-    let endpoint = "/TimerToysAPI/DeleteTimer|{{PageKey}}|{{TimerKey}}";
-    endpoint = endpoint.replace("{{PageKey}}", global.PageKey);
-    endpoint = endpoint.replace("{{TimerKey}}", sender.TimerKey);
+    let form1 = blankForm();
+    form1.Action.value = "DeleteTimer";
+    form1.PageKey.value = global.PageKey;
+    form1.ObjectKey.value = sender.TimerKey;
+    let formData = new FormData(form1);
 
-    fetch(endpoint)
-        .then(response => response.json())
-        .then(pageKey => {
-            getAll();
-            refresh();
-        });
-}
+    let returnFunction = function (event) {
+        getAll();
+        refresh();
+    };
 
-function stringifyElapsedTime(seconds) {
-
-    let hours = Math.floor(seconds / 3600);
-
-    seconds -= hours * 3600;
-
-    let minutes = Math.floor(seconds / 60);
-
-    seconds -= minutes * 60;
-
-    // ('000' + num).slice(-4)
-    let h = ('0000' + hours).slice(-2);
-    let m = ('0000' + minutes).slice(-2);
-    let s = ('0000' + seconds).slice(-2);
-
-    let sElapsedTime = `${h}:${m}:${s}`;
-
-    return sElapsedTime;
+    getApi(returnFunction).send(formData);
 
 }
 
-function getAdjustButton(offset) {
-    btn = document.createElement("button");
-    btn.className = "timer_adj_btn";
-    btn.offset = offset;
-
-    btn.onclick = function () {
-        adjustTime(this, offset);
-    }
-
-    if (offset < 0) {
-        btn.innerHTML = "-";
-        btn.style.marginRight = "0px";
-    }
-    else {
-        btn.innerHTML = "+";
-        btn.style.marginRight = "34px";
-    }
-
-    return btn;
-}
 
 function timerName_onblur(sender) {
     sender.Froze = false;
@@ -425,4 +464,46 @@ function linkUrl_onfocus(sender) {
 function toggleEditMode() {
     global.IsEditMode = global.IsEditMode ? false : true;
     refresh();
+}
+
+function gotoReadOnly() {
+    let url = `/TimerToys/${global.Page.ReadOnlyKey}`;
+    location.href = url;
+}
+
+function gotoLink(sender) {
+    let url = sender.url.toLowerCase();
+    let loc = url.startsWith("http") ? sender.url : "https://" + sender.url;
+    location.href = loc;
+}
+
+function blankForm() {
+    let form1 = global.Form1;
+    form1.Action.value = "";
+    form1.PageKey.value = "";
+    form1.ObjectKey.value = "";
+    form1.StringValue.value = "";
+    form1.IntegerValue.value = "";
+    return form1;
+}
+
+function stringifyElapsedTime(seconds) {
+
+    let hours = Math.floor(seconds / 3600);
+
+    seconds -= hours * 3600;
+
+    let minutes = Math.floor(seconds / 60);
+
+    seconds -= minutes * 60;
+
+    // ('000' + num).slice(-4)
+    let h = ('0000' + hours).slice(-2);
+    let m = ('0000' + minutes).slice(-2);
+    let s = ('0000' + seconds).slice(-2);
+
+    let sElapsedTime = `${h}:${m}:${s}`;
+
+    return sElapsedTime;
+
 }

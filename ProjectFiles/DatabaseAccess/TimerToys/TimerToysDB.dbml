@@ -23,12 +23,6 @@
       <Column Name="ElapsedTime" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
-  <Function Name="tt.AdjustTimer" Method="AdjustTimer">
-    <Parameter Name="PageKey" Parameter="pageKey" Type="System.String" DbType="Char(36)" />
-    <Parameter Name="TimerKey" Parameter="timerKey" Type="System.String" DbType="Char(36)" />
-    <Parameter Name="Offset" Parameter="offset" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="tt.DeleteLink" Method="DeleteLink">
     <Parameter Name="PageKey" Parameter="pageKey" Type="System.String" DbType="Char(36)" />
     <Parameter Name="LinkKey" Parameter="linkKey" Type="System.Int32" DbType="Int" />
@@ -52,11 +46,6 @@
     <Parameter Name="PageKey" Parameter="pageKey" Type="System.String" DbType="Char(36)" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="tt.ResetTimer" Method="ResetTimer">
-    <Parameter Name="PageKey" Parameter="pageKey" Type="System.String" DbType="Char(36)" />
-    <Parameter Name="TimerKey" Parameter="timerKey" Type="System.String" DbType="Char(36)" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="tt.SelectLinks" Method="SelectLinks">
     <Parameter Name="PageKey" Parameter="pageKey" Type="System.String" DbType="Char(36)" />
     <ElementType IdRef="ID1" />
@@ -69,32 +58,43 @@
     <Parameter Name="PageKey" Parameter="pageKey" Type="System.String" DbType="Char(36)" />
     <ElementType IdRef="ID3" />
   </Function>
-  <Function Name="tt.ToggleTimer" Method="ToggleTimer">
-    <Parameter Name="PageKey" Parameter="pageKey" Type="System.String" DbType="Char(36)" />
-    <Parameter Name="TimerKey" Parameter="timerKey" Type="System.String" DbType="Char(36)" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="tt.UpdateLinkName" Method="UpdateLinkName">
-    <Parameter Name="PageKey" Parameter="pageKey" Type="System.String" DbType="Char(36)" />
-    <Parameter Name="LinkKey" Parameter="linkKey" Type="System.String" DbType="Char(36)" />
-    <Parameter Name="LinkName" Parameter="linkName" Type="System.String" DbType="NVarChar(150)" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="tt.UpdatePageName" Method="UpdatePageName">
     <Parameter Name="PageKey" Parameter="pageKey" Type="System.String" DbType="Char(36)" />
     <Parameter Name="PageName" Parameter="pageName" Type="System.String" DbType="NVarChar(150)" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="tt.UpdateTimerName" Method="UpdateTimerName">
+  <Function Name="tt.AdjustTimer" Method="AdjustTimer">
     <Parameter Name="PageKey" Parameter="pageKey" Type="System.String" DbType="Char(36)" />
-    <Parameter Name="TimerKey" Parameter="timerKey" Type="System.String" DbType="Char(36)" />
-    <Parameter Name="TimerName" Parameter="timerName" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="TimerKey" Parameter="timerKey" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Offset" Parameter="offset" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="tt.ResetTimer" Method="ResetTimer">
+    <Parameter Name="PageKey" Parameter="pageKey" Type="System.String" DbType="Char(36)" />
+    <Parameter Name="TimerKey" Parameter="timerKey" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="tt.ToggleTimer" Method="ToggleTimer">
+    <Parameter Name="PageKey" Parameter="pageKey" Type="System.String" DbType="Char(36)" />
+    <Parameter Name="TimerKey" Parameter="timerKey" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="tt.UpdateLinkName" Method="UpdateLinkName">
+    <Parameter Name="PageKey" Parameter="pageKey" Type="System.String" DbType="Char(36)" />
+    <Parameter Name="LinkKey" Parameter="linkKey" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LinkName" Parameter="linkName" Type="System.String" DbType="NVarChar(150)" />
     <Return Type="System.Int32" />
   </Function>
   <Function Name="tt.UpdateLinkUrl" Method="UpdateLinkUrl">
     <Parameter Name="PageKey" Parameter="pageKey" Type="System.String" DbType="Char(36)" />
-    <Parameter Name="LinkKey" Parameter="linkKey" Type="System.String" DbType="Char(36)" />
+    <Parameter Name="LinkKey" Parameter="linkKey" Type="System.Int32" DbType="Int" />
     <Parameter Name="LinkUrl" Parameter="linkUrl" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="tt.UpdateTimerName" Method="UpdateTimerName">
+    <Parameter Name="PageKey" Parameter="pageKey" Type="System.String" DbType="Char(36)" />
+    <Parameter Name="TimerKey" Parameter="timerKey" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TimerName" Parameter="timerName" Type="System.String" DbType="NVarChar(150)" />
     <Return Type="System.Int32" />
   </Function>
 </Database>

@@ -7,10 +7,9 @@ namespace DavesGamesMVC.Models
     {
         public string Action { get; set; }
         public string PageKey { get; set; }
-        public int TimerKey { get; set; }
-        public int LinkKey { get; set; }
-        public string MyStringValue { get; set; }
-        public int MyIntValue { get; set; }
+        public int ObjectKey { get; set; }
+        public string StringValue { get; set; }
+        public int IntegerValue { get; set; }
 
     }
 }

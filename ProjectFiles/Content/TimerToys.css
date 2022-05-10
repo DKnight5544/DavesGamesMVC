@@ -166,12 +166,13 @@ input:focus {
 .link_edit_form {
     width: 350px;
     margin-top: 20px;
-    margin-right:20px;
+    margin-left: 10px;
+    margin-right: 10px;
     text-align: left;
     background-color: lightgrey;
     box-sizing: border-box;
     padding: 10px;
-    padding-right:20px;
+    padding-right: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 

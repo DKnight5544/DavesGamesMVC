@@ -49,55 +49,55 @@ namespace DavesGamesMVC.Controllers
 
                 else if (id.Action == "UpdatePageName")
                 {
-                    var results = c.UpdatePageName(id.PageKey, id.MyStringValue);
+                    var results = c.UpdatePageName(id.PageKey, id.StringValue);
                     return jss.Serialize("OK");
                 }
 
                 else if (id.Action == "UpdateTimerName")
                 {
-                    var results = c.UpdateTimerName(id.PageKey, id.TimerKey, id.MyStringValue);
+                    var results = c.UpdateTimerName(id.PageKey, id.ObjectKey, id.StringValue);
                     return jss.Serialize("OK");
                 }
 
                 else if (id.Action == "AdustTimer")
                 {
-                    var results = c.AdjustTimer(id.PageKey, id.TimerKey, id.MyIntValue);
+                    var results = c.AdjustTimer(id.PageKey, id.ObjectKey, id.IntegerValue);
                     return jss.Serialize("OK");
                 }
 
                 else if (id.Action == "ToggleTimer")
                 {
-                    var results = c.ToggleTimer(id.PageKey, id.TimerKey);
+                    var results = c.ToggleTimer(id.PageKey, id.ObjectKey);
                     return jss.Serialize("OK");
                 }
 
                 else if (id.Action == "ResetTimer")
                 {
-                    var results = c.ResetTimer(id.PageKey, id.TimerKey);
+                    var results = c.ResetTimer(id.PageKey, id.ObjectKey);
                     return jss.Serialize("OK");
                 }
 
                 else if (id.Action == "DeleteTimer")
                 {
-                    var results = c.DeleteTimer(id.PageKey, id.TimerKey);
+                    var results = c.DeleteTimer(id.PageKey, id.ObjectKey);
                     return jss.Serialize("OK");
                 }
 
                 else if (id.Action == "UpdateLinkName")
                 {
-                    var results = c.UpdateLinkName(id.PageKey, id.LinkKey, id.MyStringValue);
+                    var results = c.UpdateLinkName(id.PageKey, id.ObjectKey, id.StringValue);
                     return jss.Serialize("OK");
                 }
 
                 else if (id.Action == "UpdateLinkUrl")
                 {
-                    var results = c.UpdateLinkUrl(id.PageKey, id.LinkKey, id.MyStringValue);
+                    var results = c.UpdateLinkUrl(id.PageKey, id.ObjectKey, id.StringValue);
                     return jss.Serialize("OK");
                 }
 
                 else if (id.Action == "DeleteLink")
                 {
-                    var results = c.DeleteTimer(id.PageKey, id.TimerKey);
+                    var results = c.DeleteTimer(id.PageKey, id.ObjectKey);
                     return jss.Serialize("OK");
                 }
 

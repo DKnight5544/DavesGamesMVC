@@ -16,7 +16,8 @@ namespace DavesGamesMVC.Controllers
             ViewBag.CSS = "~/Content/TimerToys.css";
             ViewBag.JS = "~/Scripts/TimerToys.js";
 
-            id = string.IsNullOrWhiteSpace(id) ? "Home" : id;
+            // Goto Home Page if no ID.
+            id = string.IsNullOrWhiteSpace(id) ? "A0EB954A-2C18-48BF-BA9F-570650EAC2F2" : id;
 
             ViewBag.PageKey = id;
             return View();
