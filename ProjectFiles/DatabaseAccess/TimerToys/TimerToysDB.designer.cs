@@ -86,20 +86,6 @@ namespace DavesGamesMVC.DatabaseAccess.TimerToys
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="tt.DeleteLink")]
-		public int DeleteLink([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PageKey", DbType="Char(36)")] string pageKey, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LinkKey", DbType="Int")] System.Nullable<int> linkKey)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pageKey, linkKey);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="tt.DeleteTimer")]
-		public int DeleteTimer([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PageKey", DbType="Char(36)")] string pageKey, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TimerKey", DbType="Int")] System.Nullable<int> timerKey)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pageKey, timerKey);
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="tt.InsertLink")]
 		public int InsertLink([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PageKey", DbType="Char(36)")] string pageKey)
 		{
@@ -188,6 +174,20 @@ namespace DavesGamesMVC.DatabaseAccess.TimerToys
 		public int UpdateTimerName([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PageKey", DbType="Char(36)")] string pageKey, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TimerKey", DbType="Int")] System.Nullable<int> timerKey, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TimerName", DbType="NVarChar(150)")] string timerName)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pageKey, timerKey, timerName);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="tt.DeleteTimer")]
+		public int DeleteTimer([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PageKey", DbType="Char(36)")] string pageKey, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TimerKey", DbType="Int")] System.Nullable<int> timerKey)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pageKey, timerKey);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="tt.DeleteLink")]
+		public int DeleteLink([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PageKey", DbType="Char(36)")] string pageKey, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LinkKey", DbType="Int")] System.Nullable<int> linkKey)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pageKey, linkKey);
 			return ((int)(result.ReturnValue));
 		}
 	}

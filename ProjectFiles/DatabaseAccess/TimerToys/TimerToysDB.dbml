@@ -23,16 +23,6 @@
       <Column Name="ElapsedTime" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
-  <Function Name="tt.DeleteLink" Method="DeleteLink">
-    <Parameter Name="PageKey" Parameter="pageKey" Type="System.String" DbType="Char(36)" />
-    <Parameter Name="LinkKey" Parameter="linkKey" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="tt.DeleteTimer" Method="DeleteTimer">
-    <Parameter Name="PageKey" Parameter="pageKey" Type="System.String" DbType="Char(36)" />
-    <Parameter Name="TimerKey" Parameter="timerKey" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="tt.InsertLink" Method="InsertLink">
     <Parameter Name="PageKey" Parameter="pageKey" Type="System.String" DbType="Char(36)" />
     <Return Type="System.Int32" />
@@ -95,6 +85,16 @@
     <Parameter Name="PageKey" Parameter="pageKey" Type="System.String" DbType="Char(36)" />
     <Parameter Name="TimerKey" Parameter="timerKey" Type="System.Int32" DbType="Int" />
     <Parameter Name="TimerName" Parameter="timerName" Type="System.String" DbType="NVarChar(150)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="tt.DeleteTimer" Method="DeleteTimer">
+    <Parameter Name="PageKey" Parameter="pageKey" Type="System.String" DbType="Char(36)" />
+    <Parameter Name="TimerKey" Parameter="timerKey" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="tt.DeleteLink" Method="DeleteLink">
+    <Parameter Name="PageKey" Parameter="pageKey" Type="System.String" DbType="Char(36)" />
+    <Parameter Name="LinkKey" Parameter="linkKey" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
 </Database>

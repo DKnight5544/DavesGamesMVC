@@ -103,14 +103,21 @@ function refreshLink(data, link) {
 
     linkEdit.style.display = global.IsEditMode ? "inline-block" : "none";
 
+    //Link Name Input
     let obj = linkEdit.children[2];
     if (!obj.Froze) obj.value = data.LinkName;
     obj.OrgValue = data.LinkName;
     obj.LinkKey = data.LinkKey;
 
+    //Link Url Input
     obj = linkEdit.children[6];
     if (!obj.Froze) obj.value = data.LinkUrl;
     obj.LinkKey = data.LinkKey;
+
+    //Delete Button.
+    obj = linkEdit.children[8];
+    obj.LinkKey = data.LinkKey;
+
 
 }
 
@@ -402,6 +409,23 @@ function resetTimer(sender) {
     form1.Action.value = "ResetTimer";
     form1.PageKey.value = global.PageKey;
     form1.ObjectKey.value = sender.TimerKey;
+    let formData = new FormData(form1);
+
+    let returnFunction = function (event) {
+        getAll();
+        refresh();
+    };
+
+    getApi(returnFunction).send(formData);
+
+}
+
+function deleteLink(sender) {
+
+    let form1 = blankForm();
+    form1.Action.value = "DeleteLink";
+    form1.PageKey.value = global.PageKey;
+    form1.ObjectKey.value = sender.LinkKey;
     let formData = new FormData(form1);
 
     let returnFunction = function (event) {

@@ -97,7 +97,7 @@ namespace DavesGamesMVC.Controllers
 
                 else if (id.Action == "DeleteLink")
                 {
-                    var results = c.DeleteTimer(id.PageKey, id.ObjectKey);
+                    var results = c.DeleteLink(id.PageKey, id.ObjectKey);
                     return jss.Serialize("OK");
                 }
 
