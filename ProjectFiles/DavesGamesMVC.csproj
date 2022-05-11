@@ -131,8 +131,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\TimerToysAPIControllerII.cs" />
-    <Compile Include="Controllers\TimerToysController.cs" />
     <Compile Include="Controllers\GameOfLifeController.cs" />
     <Compile Include="Controllers\SFD3.cs" />
     <Compile Include="Controllers\SFD2.cs" />
@@ -141,7 +141,6 @@
     <Compile Include="Controllers\SliderPuzzleController.cs" />
     <Compile Include="Controllers\SudokuSolver.cs" />
     <Compile Include="Controllers\D2DController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DatabaseAccess\TimerToys\TimerToysDB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -194,7 +193,6 @@
     <Content Include="Content\SliderPuzzleCustomizations\VeryLikely.jpg" />
     <Content Include="Content\SliderPuzzleCustomizations\VeryLikely.js" />
     <Content Include="Content\SudokuSolver.css" />
-    <Content Include="Scripts\TimerToys - Copy.js" />
     <Content Include="Scripts\TimerToys.js" />
     <Content Include="Scripts\Home.js" />
     <Content Include="Scripts\GameOfLife.js" />
@@ -219,7 +217,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -245,7 +242,7 @@
     <None Include="Properties\PublishProfiles\davesgames - Web Deploy3.pubxml" />
     <Content Include="Views\SFD2\Index.cshtml" />
     <Content Include="Views\SFD3\Index.cshtml" />
-    <Content Include="Views\TimerToys\Index.cshtml" />
+    <Content Include="Views\Page\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

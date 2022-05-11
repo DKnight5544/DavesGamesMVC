@@ -240,7 +240,7 @@ function getNewPage() {
 
     let returnFunction = function (event) {
         let r = JSON.parse(event.target.response);
-        location.href = `/TimerToys/${r}`;
+        location.href = `/Page/${r}`;
     };
 
     getApi(returnFunction).send(formData);
@@ -491,14 +491,15 @@ function toggleEditMode() {
 }
 
 function gotoReadOnly() {
-    let url = `/TimerToys/${global.Page.ReadOnlyKey}`;
+    let url = `/Page/${global.Page.ReadOnlyKey}`;
     location.href = url;
 }
 
 function gotoLink(sender) {
     let url = sender.url.toLowerCase();
-    let loc = url.startsWith("http") ? sender.url : "https://" + sender.url;
-    location.href = loc;
+    //let loc = url.startsWith("http") ? sender.url : "https://" + sender.url;
+    //location.href = loc;
+    location.href = url;
 }
 
 function blankForm() {
