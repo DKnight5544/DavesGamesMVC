@@ -60,11 +60,31 @@ function refresh() {
     global.Banner.OrgValue = global.Page.PageName;
     global.ReadOnlyKey = global.Page.ReadOnlyKey;
 
-    let displaySetting = global.Page.IsReadOnly ? "none" : "inline-block";
-    global.AddTimerButton.style.display = displaySetting;
-    global.ReadOnlyButton.style.display = displaySetting;
-    global.AddLinkButton.style.display = displaySetting;
-    global.EditModeButton.style.display = displaySetting;
+
+    if (global.Page.IsReadOnly) {
+        global.AddTimerButton.style.display = "none";
+        global.AddLinkButton.style.display = "none";
+        global.ReadOnlyButton.style.display = "none";
+        global.EditModeButton.style.display = "none";
+        global.NewPageButton.style.display = "inline-block";
+    }
+
+    else if (global.IsEditMode) {
+        global.AddTimerButton.style.display = "none";
+        global.AddLinkButton.style.display = "none";
+        global.ReadOnlyButton.style.display = "none";
+        global.EditModeButton.style.display = "inline-block";
+        global.EditModeButton.innerHTML = "Done";
+        global.NewPageButton.style.display = "none";
+    }
+    else {
+        global.AddTimerButton.style.display = "inline-block";
+        global.AddLinkButton.style.display = "inline-block";
+        global.ReadOnlyButton.style.display = "inline-block";
+        global.EditModeButton.style.display = "inline-block";
+        global.EditModeButton.innerHTML = "Edit Page";
+        global.NewPageButton.style.display = "inline-block";
+    }
 
     showHide(global.Links, global.LinkContainer, refreshLink);
     showHide(global.Timers, global.TimerContainer, refreshTimer);

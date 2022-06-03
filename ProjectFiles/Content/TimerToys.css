@@ -35,12 +35,17 @@ input:focus {
 }
 
 
+.menu_container {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
 .menu_btn {
     padding: 5px;
-    width:100px;
-    margin-top:10px;
-    margin-left:10px;
-    margin-right:0px;
+    width: 100px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 0px;
 }
 
 
@@ -50,7 +55,6 @@ input:focus {
     padding-left: 10px;
     padding-right: 10px;
     text-align:center;
-    margin-bottom:30px;
 }
 
 .timer_table {
