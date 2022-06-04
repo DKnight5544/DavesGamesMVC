@@ -3,11 +3,45 @@
     padding: 0;
     font-family: monospace;
     margin-bottom: 20px;
-    text-align:center;
+    text-align: center;
+}
+
+.page_container {
+    width: 100%;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.banner_table {
+    width: 100%;
+    border-collapse: collapse;
+    border: none;
+    table-layout: fixed;
+}
+
+.banner_col1 {
+    width: 50px;
+    background-color: black;
+    cursor: pointer;
+}
+
+.banner_col2 {
+    width: 100%;
+    background-color: black;
+    text-align: left;
+}
+
+
+
+hr {
+    height: 4px;
+    width: 30px;
+    background-color:white;
+    border:none;
 }
 
 .banner {
-    width: 100%;
     font-family: 'Nunito', sans-serif;
     font-size: 30px;
     background-color: black;
@@ -16,36 +50,41 @@
     padding-left: 10px;
     box-sizing: border-box;
     margin-bottom: 0px;
-    text-align:center;
+    width: 100%;
+    border: none;
 }
 
-    #banner:focus {
-        background-color:lightgray;
-        color:black;
-    }
+#banner:focus {
+    background-color: lightgray;
+    color: black;
+}
+
+
 
 input {
     cursor: pointer;
     text-decoration: none;
-    outline:none;
-}
-
-input:focus {
     outline: none;
 }
 
+    input:focus {
+        outline: none;
+    }
 
-.menu_container {
-    margin-top: 15px;
+
+#MenuContainer {
+    margin-top: 0px;
     margin-bottom: 15px;
+    background-color:lightgray;
+    display: none;
+    padding-bottom:10px;
 }
 
 .menu_btn {
     padding: 5px;
-    width: 100px;
+    width: 80%;
     margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 0px;
+    display:none;
 }
 
 
@@ -54,26 +93,25 @@ input:focus {
     box-sizing: border-box;
     padding-left: 10px;
     padding-right: 10px;
-    text-align:center;
+    text-align: center;
 }
 
 .timer_table {
-    width: 350px;
+    width: 100%;
     margin-top: 20px;
-    margin-left:10px;
-    margin-right:10px;
-  /*  float: left;*/
-    padding:0px;
-    border:none;
-    border-collapse:collapse;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 0px;
+    border: none;
+    border-collapse: collapse;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    display:none;
+    display: none;
 }
 
 
 .timer_name_col {
-    width: 350px;
-    padding:0px;
+    width: 100%;
+    padding: 0px;
 }
 
 .timer_name_inp {
@@ -82,10 +120,10 @@ input:focus {
     padding: 5px;
     letter-spacing: 2px;
     box-sizing: border-box;
-    border:none;
-    background-color:lightgray;
-    text-align:center;
-    margin:0px;
+    border: none;
+    background-color: lightgray;
+    text-align: center;
+    margin: 0px;
 }
 
 .timer_elapsed_col {
@@ -94,22 +132,22 @@ input:focus {
     padding: 5px;
     padding-left: 5px;
     /*letter-spacing: 2px;*/
-    color:blue;
+    color: blue;
 }
 
 .timer_adj_col {
     box-sizing: border-box;
-    padding-left:63px;
+    padding-left: 63px;
     padding-bottom: 10px;
-    text-align:left;
-    font-size:0px;
+    text-align: left;
+    font-size: 0px;
 }
 
 
 .timer_adj_button_d {
     cursor: pointer;
-    font-size:18px;
-    width:30px;
+    font-size: 18px;
+    width: 30px;
 }
 
 .timer_adj_button_u {
@@ -122,29 +160,26 @@ input:focus {
 .timer_main_col {
     text-align: center;
     box-sizing: border-box;
-    padding:10px;
+    padding: 10px;
 }
 
-.timer_main_btn{
-    width:80px;
-    padding:5px;
-    margin-left:5px;
-    margin-right:5px;
+.timer_main_btn {
+    width: 80px;
+    padding: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
     cursor: pointer;
-
 }
 
 
 .timer_button {
-    width: 350px;
+    width: 90%;
     font-size: 18px;
     margin-top: 20px;
-    margin-left:10px;
-    margin-right:10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     box-sizing: border-box;
-    padding-top:5px;
-    cursor:pointer;
+    padding-top: 5px;
+    cursor: pointer;
 }
 
 .timer_button_time {
@@ -156,11 +191,9 @@ input:focus {
 
 
 .link_button {
-    width: 350px;
+    width: 90%;
     font-size: 18px;
     margin-top: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     box-sizing: border-box;
     padding: 10px;
@@ -168,7 +201,7 @@ input:focus {
 }
 
 .link_edit_form {
-    width: 350px;
+    width: 90%;
     margin-top: 20px;
     margin-left: 10px;
     margin-right: 10px;
@@ -182,7 +215,7 @@ input:focus {
 
 .link_label {
     margin-left: 6px;
-    font-size:18px;
+    font-size: 18px;
 }
 
 .link_name_inp_1 {
@@ -192,6 +225,7 @@ input:focus {
     box-sizing: border-box;
     padding: 5px
 }
+
 .link_name_inp_2 {
     width: 100%;
     margin-bottom: 10px;
@@ -203,7 +237,7 @@ input:focus {
 .link_dlt_btn {
     width: 100%;
     font-size: 16px;
-    font-weight:normal;
+    font-weight: normal;
     box-sizing: border-box;
     padding: 5px
 }

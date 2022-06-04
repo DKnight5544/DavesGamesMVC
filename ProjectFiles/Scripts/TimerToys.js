@@ -12,11 +12,19 @@ function begin() {
     global.ReadOnlyButton = document.getElementById("ReadOnlyButton")
     global.AddLinkButton = document.getElementById("AddLinkButton")
     global.EditModeButton = document.getElementById("EditModeButton")
+    global.ControlsButton = document.getElementById("ControlsButton")
+    global.MenuContainer = document.getElementById("MenuContainer")
+    global.DoneButtonOne = document.getElementById("DoneButtonOne")
+    global.DoneButtonTwo = document.getElementById("DoneButtonTwo")
 
     global.LinkTemplate = document.getElementById("LinkTemplate");
     global.TimerTemplate = document.getElementById("TimerTemplate");
     global.LinkContainer = document.getElementById("LinkContainer");
     global.TimerContainer = document.getElementById("TimerContainer");
+
+    global.RefreshCount = 0;
+    global.ControlCount = 0;
+    
     global.Form1 = document.getElementById("Form1");
 
     global.IsEditMode = false;
@@ -67,27 +75,38 @@ function refresh() {
         global.ReadOnlyButton.style.display = "none";
         global.EditModeButton.style.display = "none";
         global.NewPageButton.style.display = "inline-block";
+        global.DoneButtonOne.style.display = "none";
+        global.DoneButtonTwo.style.display = "none";
     }
 
     else if (global.IsEditMode) {
         global.AddTimerButton.style.display = "none";
         global.AddLinkButton.style.display = "none";
         global.ReadOnlyButton.style.display = "none";
-        global.EditModeButton.style.display = "inline-block";
-        global.EditModeButton.innerHTML = "Done";
+        global.EditModeButton.style.display = "none";
         global.NewPageButton.style.display = "none";
+        global.DoneButtonOne.style.display = "inline-block";
+        global.DoneButtonTwo.style.display = "inline-block";
     }
     else {
         global.AddTimerButton.style.display = "inline-block";
         global.AddLinkButton.style.display = "inline-block";
         global.ReadOnlyButton.style.display = "inline-block";
         global.EditModeButton.style.display = "inline-block";
-        global.EditModeButton.innerHTML = "Edit Page";
         global.NewPageButton.style.display = "inline-block";
+        global.DoneButtonOne.style.display = "none";
+        global.DoneButtonTwo.style.display = "none";
     }
 
+    global.ControlCount = 0;
+    global.RefreshCount++;
     showHide(global.Links, global.LinkContainer, refreshLink);
     showHide(global.Timers, global.TimerContainer, refreshTimer);
+
+    //If first time screen is displayed and 0 controls show the controls.
+    if (global.ControlCount === 0 && global.RefreshCount === 1) {
+        controlsButton_onclick();
+    }
 
 }
 
@@ -100,7 +119,8 @@ function showHide(dataObj, container, refreshFunction) {
         let data = dataObj[i];
         if (data) {
             refreshFunction(data, obj);
-            obj.style.display = "inline-block";
+            obj.style.display = "block";
+            global.ControlCount++;
         }
         else {
             obj.style.display = "none";
@@ -116,7 +136,7 @@ function refreshLink(data, link) {
     let linkNormal = link.children[0];
     let linkEdit = link.children[1];
 
-    linkNormal.style.display = global.IsEditMode ? "none" : "inline-block";
+    linkNormal.style.display = global.IsEditMode ? "none" : "block";
     linkNormal.children[0].innerHTML = data.LinkName;
     linkNormal.children[0].url = data.LinkUrl;
 
@@ -269,6 +289,8 @@ function getNewPage() {
 
 function addNewTimer() {
 
+    controlsButton_onclick();
+
     let form1 = global.Form1;
     form1.Action.value = "AddNewTimer";
     form1.PageKey.value = global.PageKey;
@@ -287,6 +309,8 @@ function addNewTimer() {
 }
 
 function addNewLink() {
+
+    controlsButton_onclick();
 
     let form1 = global.Form1;
     form1.Action.value = "AddNewLink";
@@ -507,6 +531,7 @@ function linkUrl_onfocus(sender) {
 
 function toggleEditMode() {
     global.IsEditMode = global.IsEditMode ? false : true;
+    controlsButton_onclick();
     refresh();
 }
 
@@ -551,4 +576,9 @@ function stringifyElapsedTime(seconds) {
 
     return sElapsedTime;
 
+}
+
+function controlsButton_onclick() {
+    if (global.IsEditMode) return false;
+    global.MenuContainer.style.display = (global.MenuContainer.style.display != "block") ? "block" : "none";
 }
