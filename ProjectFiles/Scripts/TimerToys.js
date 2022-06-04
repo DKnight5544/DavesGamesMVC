@@ -176,66 +176,39 @@ function refreshTimer(data, timer) {
     timerNormal.children[1].style.color = timeColor;
 
 
-    // table    tbody      row          col       inp/btn
-    timerEdit.style.display = global.IsEditMode ? "inline-block" : "none";
+    timerEdit.style.display = global.IsEditMode ? "block" : "none";
 
 
     //timer name input.
-    let obj = timerEdit.children[0].children[0].children[0].children[0];
-    if (!obj.Froze) obj.value = data.TimerName;
-    obj.TimerKey = data.TimerKey;
-    obj.OrgValue = data.TimerName;
+    let inp = timerEdit
+        .children[0] //timer_name_wrapper
+        .children[0] //timer_name_input
+        ;
+
+    if (!inp.Froze) inp.value = data.TimerName;
+    inp.TimerKey = data.TimerKey;
+    inp.OrgValue = data.TimerName;
 
     //elapsed time
-    timerEdit.children[0].children[1].children[0].innerHTML = timeString;
-    timerEdit.children[0].children[1].children[0].style.color = timeColor;
+    let elapsedTimeDiv = timerEdit.children[1];
+    elapsedTimeDiv.innerHTML = timeString;
+    elapsedTimeDiv.style.color = timeColor;
 
-    //adjust buttons
-    timerEdit.children[0].children[2].children[0].children[0].TimerKey = data.TimerKey;
-    timerEdit.children[0].children[2].children[0].children[1].TimerKey = data.TimerKey;
-    timerEdit.children[0].children[2].children[0].children[2].TimerKey = data.TimerKey;
-    timerEdit.children[0].children[2].children[0].children[3].TimerKey = data.TimerKey;
-    timerEdit.children[0].children[2].children[0].children[4].TimerKey = data.TimerKey;
-    timerEdit.children[0].children[2].children[0].children[5].TimerKey = data.TimerKey;
-    timerEdit.children[0].children[3].children[0].children[0].innerHTML = data.IsRunning ? "OFF" : "ON";
+    ////adjust buttons
+    let adjustButtons = timerEdit.children[2];
+    adjustButtons.children[0].TimerKey = data.TimerKey;
+    adjustButtons.children[1].TimerKey = data.TimerKey;
+    adjustButtons.children[2].TimerKey = data.TimerKey;
+    adjustButtons.children[3].TimerKey = data.TimerKey;
+    adjustButtons.children[4].TimerKey = data.TimerKey;
+    adjustButtons.children[5].TimerKey = data.TimerKey;
 
-    // Timer Buttons
-    // table    tbody       row          col       inp/btn
-    timerEdit.children[0].children[3].children[0].children[0].TimerKey = data.TimerKey;
-    timerEdit.children[0].children[3].children[0].children[1].TimerKey = data.TimerKey;
-    timerEdit.children[0].children[3].children[0].children[2].TimerKey = data.TimerKey;
-
-}
-
-function refreshTimerEdit(data, timer) {
-    let timeString = stringifyElapsedTime(data.ElapsedTime);
-
-    timer.style.display = "inline-block";
-
-    let inp = timer.children[0].children[0].children[0].children[0];
-    if (!inp.Froze) {
-        inp.value = data.TimerName;
-        inp.TimerKey = data.TimerKey;
-    }
-
-    //      tbody      row          col         inp/btn
-    //row 1
-    timer.children[0].children[1].children[0].innerHTML = timeString;
-    timer.children[0].children[1].children[0].style.color = data.IsRunning ? "red" : "black";
-
-    //row 2
-    timer.children[0].children[2].children[0].children[0].TimerKey = data.TimerKey;
-    timer.children[0].children[2].children[0].children[1].TimerKey = data.TimerKey;
-    timer.children[0].children[2].children[0].children[2].TimerKey = data.TimerKey;
-    timer.children[0].children[2].children[0].children[3].TimerKey = data.TimerKey;
-    timer.children[0].children[2].children[0].children[4].TimerKey = data.TimerKey;
-    timer.children[0].children[2].children[0].children[5].TimerKey = data.TimerKey;
-
-    //row 3
-    timer.children[0].children[3].children[0].children[0].innerHTML = data.IsRunning ? "OFF" : "ON";
-    timer.children[0].children[3].children[0].children[0].TimerKey = data.TimerKey;
-    timer.children[0].children[3].children[0].children[1].TimerKey = data.TimerKey;
-    timer.children[0].children[3].children[0].children[2].TimerKey = data.TimerKey;
+    //// Timer Buttons
+    let timerButtons = timerEdit.children[3];
+    timerButtons.children[0].innerHTML = data.IsRunning ? "OFF" : "ON";
+    timerButtons.children[0].TimerKey = data.TimerKey;
+    timerButtons.children[1].TimerKey = data.TimerKey;
+    timerButtons.children[2].TimerKey = data.TimerKey;
 
 }
 

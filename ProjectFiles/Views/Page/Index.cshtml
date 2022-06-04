@@ -72,36 +72,28 @@
             </button>
         </div>
         <div>
-            <table class="timer_table">
-                <tr>
-                    <td class="timer_name_col">
+            <div class="timer_edit_div">
+                    <div class="timer_name_wrapper">
                         <input type="text"
                                class="timer_name_inp"
                                onfocus="timerName_onfocus(this)"
                                onblur="timerName_onblur(this)" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="timer_elapsed_col"></td>
-                </tr>
-                <tr>
-                    <td class="timer_adj_col">
+                    </div>
+                    <div class="timer_elapsed_time_div"></div>
+                    <div class="timer_adj_div">
                         <button class="timer_adj_button_d" onclick="adjustTime(this, -3600);">-</button>
                         <button class="timer_adj_button_u" onclick="adjustTime(this, 3600);">+</button>
                         <button class="timer_adj_button_d" onclick="adjustTime(this, -60);">-</button>
                         <button class="timer_adj_button_u" onclick="adjustTime(this, 60);">+</button>
                         <button class="timer_adj_button_d" onclick="adjustTime(this, -1);">-</button>
                         <button class="timer_adj_button_u" onclick="adjustTime(this, 1);">+</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="timer_main_col">
+                    </div>
+                    <div class="timer_buttons_div">
                         <button class="timer_main_btn" onclick="toggleTimer(this)">{{on_off}}</button>
                         <button class="timer_main_btn" onclick="resetTimer(this)">RESET</button>
                         <button class="timer_main_btn" onclick="deleteTimer(this)">DELETE</button>
-                    </td>
-                </tr>
-            </table>
+                    </div>
+            </div>
         </div>
     </div>
 </div>
