@@ -1,6 +1,4 @@
 
-
-
 function begin() {
 
     if (global.PageKey === "Home") return false
@@ -24,7 +22,7 @@ function begin() {
 
     global.RefreshCount = 0;
     global.ControlCount = 0;
-    
+
     global.Form1 = document.getElementById("Form1");
 
     global.IsEditMode = false;
@@ -130,7 +128,6 @@ function showHide(dataObj, container, refreshFunction) {
 
 }
 
-
 function refreshLink(data, link) {
 
     let linkNormal = link.children[0];
@@ -164,7 +161,6 @@ function refreshLink(data, link) {
 function refreshTimer(data, timer) {
 
     let timerNormal = timer.children[0].children[0];
-    let timerEdit = timer.children[1].children[0];
 
     let timeString = stringifyElapsedTime(data.ElapsedTime);
     let timeColor = data.IsRunning ? "red" : "black";
@@ -176,13 +172,16 @@ function refreshTimer(data, timer) {
     timerNormal.children[1].style.color = timeColor;
 
 
+    let timerEdit = timer.children[1].children[0];
     timerEdit.style.display = global.IsEditMode ? "block" : "none";
 
 
     //timer name input.
     let inp = timerEdit
+        .children[0] //tbody
+        .children[0] //tr  row 0
         .children[0] //timer_name_wrapper
-        .children[0] //timer_name_input
+        .children[0] //timer_name_inp
         ;
 
     if (!inp.Froze) inp.value = data.TimerName;
@@ -190,21 +189,31 @@ function refreshTimer(data, timer) {
     inp.OrgValue = data.TimerName;
 
     //elapsed time
-    let elapsedTimeDiv = timerEdit.children[1];
-    elapsedTimeDiv.innerHTML = timeString;
-    elapsedTimeDiv.style.color = timeColor;
+    let elapsedTimeTD = timerEdit
+        .children[0] //tbody
+        .children[1] //tr  row 1
+        .children[0] //timer_elapsed_time
+        ;
+    elapsedTimeTD.innerHTML = timeString;
+    elapsedTimeTD.style.color = timeColor;
 
-    ////adjust buttons
-    let adjustButtons = timerEdit.children[2];
-    adjustButtons.children[0].TimerKey = data.TimerKey;
-    adjustButtons.children[1].TimerKey = data.TimerKey;
-    adjustButtons.children[2].TimerKey = data.TimerKey;
-    adjustButtons.children[3].TimerKey = data.TimerKey;
-    adjustButtons.children[4].TimerKey = data.TimerKey;
-    adjustButtons.children[5].TimerKey = data.TimerKey;
+    //adjust buttons
+    let adjustButtons = timerEdit
+        .children[0] //tbody
+        ;
+    //                row       control
+    adjustButtons.children[2].children[0].TimerKey = data.TimerKey;
+    adjustButtons.children[2].children[2].TimerKey = data.TimerKey;
+    adjustButtons.children[3].children[0].TimerKey = data.TimerKey;
+    adjustButtons.children[3].children[2].TimerKey = data.TimerKey;
+    adjustButtons.children[4].children[0].TimerKey = data.TimerKey;
+    adjustButtons.children[4].children[2].TimerKey = data.TimerKey;
 
-    //// Timer Buttons
-    let timerButtons = timerEdit.children[3];
+    // timer buttons
+    let timerButtons = timerEdit
+        .children[0] //tbody
+        .children[5] //tr  Row 5
+        ;
     timerButtons.children[0].innerHTML = data.IsRunning ? "OFF" : "ON";
     timerButtons.children[0].TimerKey = data.TimerKey;
     timerButtons.children[1].TimerKey = data.TimerKey;

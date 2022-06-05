@@ -8,9 +8,9 @@
     <table class="banner_table">
         <tr>
             <td class="banner_col1" id="ControlsButton" onclick="controlsButton_onclick();">
-                    <hr />
-                    <hr />
-                    <hr />
+                <hr />
+                <hr />
+                <hr />
             </td>
             <td class="banner_col2">
                 <input type="text" id="Banner" class="banner" />
@@ -35,6 +35,7 @@
     <button id="DoneButtonTwo" onclick="toggleEditMode();" class="menu_btn">Done</button>
 
 </div>
+
 <div id="LinkTemplate" style="display:none;">
     <div style="display:none;">
         <div class="link_button_container">
@@ -72,28 +73,39 @@
             </button>
         </div>
         <div>
-            <div class="timer_edit_div">
-                    <div class="timer_name_wrapper">
+            <table class="timer_edit_table">
+                <tr>
+                    <td class="timer_name_wrapper" colspan="3">
                         <input type="text"
                                class="timer_name_inp"
                                onfocus="timerName_onfocus(this)"
                                onblur="timerName_onblur(this)" />
-                    </div>
-                    <div class="timer_elapsed_time_div"></div>
-                    <div class="timer_adj_div">
-                        <button class="timer_adj_button_d" onclick="adjustTime(this, -3600);">-</button>
-                        <button class="timer_adj_button_u" onclick="adjustTime(this, 3600);">+</button>
-                        <button class="timer_adj_button_d" onclick="adjustTime(this, -60);">-</button>
-                        <button class="timer_adj_button_u" onclick="adjustTime(this, 60);">+</button>
-                        <button class="timer_adj_button_d" onclick="adjustTime(this, -1);">-</button>
-                        <button class="timer_adj_button_u" onclick="adjustTime(this, 1);">+</button>
-                    </div>
-                    <div class="timer_buttons_div">
-                        <button class="timer_main_btn" onclick="toggleTimer(this)">{{on_off}}</button>
-                        <button class="timer_main_btn" onclick="resetTimer(this)">RESET</button>
-                        <button class="timer_main_btn" onclick="deleteTimer(this)">DELETE</button>
-                    </div>
-            </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="timer_elapsed_time" colspan="3">0000:00:00:00</td>
+                </tr>
+                <tr>
+                    <td class="timer_adj_button_d" onclick="adjustTime(this, -3600);">-</td>
+                    <td class="timer_interval">Hours</td>
+                    <td class="timer_adj_button_u" onclick="adjustTime(this, 3600);">+</td>
+                </tr>
+                <tr>
+                    <td class="timer_adj_button_d" onclick="adjustTime(this, -60);">-</td>
+                    <td class="timer_interval">Minutes</td>
+                    <td class="timer_adj_button_u" onclick="adjustTime(this, 60);">+</td>
+                </tr>
+                <tr>
+                    <td class="timer_adj_button_d" onclick="adjustTime(this, -1);">-</td>
+                    <td class="timer_interval">Seconds</td>
+                    <td class="timer_adj_button_u" onclick="adjustTime(this, 1);">+</td>
+                </tr>
+                <tr>
+                    <td class="timer_main_btn" onclick="toggleTimer(this)">OFF</td>
+                    <td class="timer_main_btn" onclick="resetTimer(this)">RESET</td>
+                    <td class="timer_main_btn" onclick="deleteTimer(this)">DELETE</td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>
