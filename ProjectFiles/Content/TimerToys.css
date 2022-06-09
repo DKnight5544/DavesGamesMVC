@@ -8,7 +8,7 @@
 }
 
 .page_container {
-    width: 450px;
+    width: 100%;
     max-width: 450px;
     margin-left: auto;
     margin-right: auto;
@@ -18,7 +18,7 @@
 }
 
 .banner_table {
-    width: 450px;
+    width: 100%;
     border-collapse: collapse;
     border: none;
     table-layout: fixed;
@@ -85,125 +85,34 @@ input {
 .menu_btn {
     padding-top: 5px;
     padding-bottom: 5px;
-    width: 400px;
+    width: 90%;
     margin-top: 10px;
     display: none;
 }
 
 
 .container {
-    width: 450px;
+    width: 100%;
     box-sizing: border-box;
     padding-left: 10px;
     padding-right: 10px;
     text-align: center;
 }
 
-.timer_edit_table {
-    width: 400px;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    table-layout: fixed;
-    box-sizing: border-box;
-    display: none;
-    background-color: lightgrey;
-}
-
-
-.timer_name_wrapper {
-    width: 400px;
-    overflow:hidden;
-    box-sizing: border-box;
-    padding: 0px;
-}
-
-.timer_name_inp {
-    margin-top: 5px;
-    width: 390px;
-    font-size: 18px;
-    box-sizing: border-box;
-    padding: 10px;
-    border: 1px solid black;
-    background-color: white;
-    text-align: center;
-}
-
-.timer_elapsed_time{
-    width: 400px;
-    padding-top: 10px;
-    font-size: 30px;
-    font-family: monospace;
-    text-align: center;
-    color: black;
-}
-
-.timer_interval {
-    width: 350px;
-    box-sizing: border-box;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    text-align: center;
-    font-size: 20px;
-}
-
-
-.timer_adj_button_d {
-    cursor: pointer;
-    font-size:30px;
-    text-align:right;
-}
-
-.timer_adj_button_u {
-    cursor: pointer;
-    font-size: 25px;
-    text-align: left;
-}
-
-.timer_main_btn {
-    width:33%;
-    font-size: 25px;
-    text-align: center;
-    cursor: pointer;
-    padding-bottom:15px;
-}
-
-.timer_button_name{
-    padding-top:5px;
-    font-size:20px;
-}
-
-.timer_button {
-    width: 90%;
-    font-size: 18px;
-    margin-top: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    box-sizing: border-box;
-    padding-top: 5px;
-    cursor: pointer;
-}
-
-.timer_button_time {
-    font-size: 50px;
-    font-family:monospace;
-    box-sizing: border-box;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
 
 
 .link_button {
-    width: 400px;
+    width: 95%;
     font-size: 18px;
     margin-top: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
     box-sizing: border-box;
     padding: 10px;
     cursor: pointer;
 }
 
 .link_edit_form {
-    width: 90%;
+    width: 95%;
     margin-top: 20px;
     margin-left: 10px;
     margin-right: 10px;
@@ -242,4 +151,95 @@ input {
     font-weight: normal;
     box-sizing: border-box;
     padding: 5px
+}
+
+.timer_edit_table {
+    width: 95%;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    table-layout: fixed;
+    box-sizing: border-box;
+    display: none;
+    background-color: lightgrey;
+}
+
+
+.timer_name_wrapper {
+    width: 90%;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 0px;
+}
+
+.timer_name_inp {
+    width: 100%;
+    font-size: 18px;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid black;
+    background-color: white;
+    text-align: center;
+}
+
+.timer_elapsed_time {
+    width: 100%;
+    padding-top: 10px;
+    font-size: 30px;
+    font-family: monospace;
+    text-align: center;
+    color: black;
+}
+
+.timer_interval {
+    width: 350px;
+    box-sizing: border-box;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 20px;
+}
+
+
+.timer_adj_button_d {
+    cursor: pointer;
+    font-size: 30px;
+    text-align: right;
+}
+
+.timer_adj_button_u {
+    cursor: pointer;
+    font-size: 25px;
+    text-align: left;
+}
+
+.timer_main_btn {
+    width: 33%;
+    font-size: 25px;
+    text-align: center;
+    cursor: pointer;
+    padding-bottom: 15px;
+}
+
+.timer_button_name {
+    padding-top: 5px;
+    font-size: 20px;
+}
+
+.timer_button {
+    width: 95%;
+    font-size: 18px;
+    margin-top: 20px;
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+    box-sizing: border-box;
+    padding-top: 5px;
+    cursor: pointer;
+}
+
+.timer_button_time {
+    font-size: 50px;
+    font-family: monospace;
+    box-sizing: border-box;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
