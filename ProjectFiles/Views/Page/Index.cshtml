@@ -81,9 +81,9 @@
                     <td class="timer_elapsed_time" colspan="3">0000:00:00:00</td>
                 </tr>
                 <tr>
-                    <td class="timer_adj_button_d" onclick="adjustTime(this, -3600);">-</td>
-                    <td class="timer_interval">Hours</td>
-                    <td class="timer_adj_button_u" onclick="adjustTime(this, 3600);">+</td>
+                    <td class="timer_adj_button_d" onclick="adjustTime(this, -1);">-</td>
+                    <td class="timer_interval">Seconds</td>
+                    <td class="timer_adj_button_u" onclick="adjustTime(this, 1);">+</td>
                 </tr>
                 <tr>
                     <td class="timer_adj_button_d" onclick="adjustTime(this, -60);">-</td>
@@ -91,9 +91,14 @@
                     <td class="timer_adj_button_u" onclick="adjustTime(this, 60);">+</td>
                 </tr>
                 <tr>
-                    <td class="timer_adj_button_d" onclick="adjustTime(this, -1);">-</td>
-                    <td class="timer_interval">Seconds</td>
-                    <td class="timer_adj_button_u" onclick="adjustTime(this, 1);">+</td>
+                    <td class="timer_adj_button_d" onclick="adjustTime(this, -3600);">-</td>
+                    <td class="timer_interval">Hours</td>
+                    <td class="timer_adj_button_u" onclick="adjustTime(this, 3600);">+</td>
+                </tr>
+                <tr>
+                    <td class="timer_adj_button_d" onclick="adjustTime(this, -86400);">-</td>
+                    <td class="timer_interval">Days</td>
+                    <td class="timer_adj_button_u" onclick="adjustTime(this, 86400);">+</td>
                 </tr>
                 <tr>
                     <td class="timer_main_btn" onclick="toggleTimer(this)">OFF</td>

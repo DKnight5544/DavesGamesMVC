@@ -201,11 +201,13 @@ function refreshTimer(data, timer) {
     adjustButtons.children[3].children[2].TimerKey = data.TimerKey;
     adjustButtons.children[4].children[0].TimerKey = data.TimerKey;
     adjustButtons.children[4].children[2].TimerKey = data.TimerKey;
+    adjustButtons.children[5].children[0].TimerKey = data.TimerKey;
+    adjustButtons.children[5].children[2].TimerKey = data.TimerKey;
 
     // timer buttons
     let timerButtons = timerEdit
         .children[0] //tbody
-        .children[5] //tr  Row 5
+        .children[6] //tr  Row 5
         ;
     timerButtons.children[0].innerHTML = data.IsRunning ? "OFF" : "ON";
     timerButtons.children[0].TimerKey = data.TimerKey;
@@ -529,22 +531,34 @@ function blankForm() {
 
 function stringifyElapsedTime(seconds) {
 
-    let hours = Math.floor(seconds / 3600);
+    const secondsPerDay = 86400;
+    const secondsPerHour = 3600;
+    const secondsPerMinute = 60;
 
-    seconds -= hours * 3600;
+    let days = Math.floor(seconds / secondsPerDay);
 
-    let minutes = Math.floor(seconds / 60);
+    seconds -= days * secondsPerDay;
 
-    seconds -= minutes * 60;
+    let hours = Math.floor(seconds / secondsPerHour);
 
-    // ('000' + num).slice(-4)
+    seconds -= hours * secondsPerHour;
+
+    let minutes = Math.floor(seconds / secondsPerMinute);
+
+    seconds -= minutes * secondsPerMinute;
+
+
     let h = ('0000' + hours).slice(-2);
     let m = ('0000' + minutes).slice(-2);
     let s = ('0000' + seconds).slice(-2);
+    /*elapsedTime += `${h}:${m}:${s}`;*/
 
-    let sElapsedTime = `${h}:${m}:${s}`;
-
-    return sElapsedTime;
+    let elapsedTime = "";
+    elapsedTime += `<span class='time_value'>${days}</span><span class='time_unit'>d</span>`;
+    elapsedTime += `<span class='time_value'>${h}</span><span class='time_unit'>h</span>`;
+    elapsedTime += `<span class='time_value'>${m}</span><span class='time_unit'>m</span>`;
+    elapsedTime += `<span class='time_value'>${s}</span><span class='time_unit'>s</span>`;
+    return elapsedTime.trim();
 
 }
 
